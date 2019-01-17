@@ -12,19 +12,6 @@ import Vision
 
 class ViewController: UIViewController {
     
-    // MARK: Computed Properties
-    var imageOrientation: CGImagePropertyOrientation {
-        switch UIDevice.current.orientation {
-        case .portrait: return .right
-        case .landscapeRight: return .down
-        case .portraitUpsideDown: return .left
-        case .unknown: fallthrough
-        case .faceUp: fallthrough
-        case .faceDown: fallthrough
-        case .landscapeLeft: return .up
-        }
-    }
-    
     // MARK: Properties
     var scanTimer: Timer?
     var scannedFaceView = [UIView]()
@@ -39,7 +26,11 @@ class ViewController: UIViewController {
         
         // Start scan for faces
         sceneView.session.run(configuration)
-        scanTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(scanForFaces), userInfo: nil, repeats: true)
+        scanTimer = Timer.scheduledTimer(timeInterval: 0.5,
+                                         target: self,
+                                         selector: #selector(scanForFaces),
+                                         userInfo: nil,
+                                         repeats: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -70,19 +61,31 @@ class ViewController: UIViewController {
                 guard let faces = request.results as? [VNFaceObservation] else { return }
                 
                 // Mark faces in black border
-                for face in faces {
+                self.scannedFaceView = faces.map { (face: VNFaceObservation) in
+                    
+                    // Mark them in blue border
                     let faceRect  = self.faceFrame(from: face.boundingBox)
                     let faceView = UIView(frame: faceRect)
-                    faceView.layer.borderColor = UIColor.black.cgColor
-                    faceView.layer.borderWidth = 1
+                    faceView.layer.borderColor = UIColor.blue.cgColor
+                    faceView.layer.borderWidth = 2
                     self.sceneView.addSubview(faceView)
-                    self.scannedFaceView.append(faceView)
+                    
+                    // Crop face from picure and get recognition
+                    let faceCI = image.cropped(to: faceRect)
+                    let faceUI = UIImage(ciImage: faceCI)
+                    EmotionService.shared.emotion(of: faceUI) { (emojiID: String?) in
+                        guard let emojiID = emojiID else { return }
+                        print(emojiID)
+                    }
+                    
+                    // Gets all face frames
+                    return faceView
                 }
             }
         }
         
         // Run face detection
-        try? VNImageRequestHandler(ciImage: image, orientation: imageOrientation).perform([detectFaceRequest])
+        try? VNImageRequestHandler(ciImage: image, orientation: UIDeviceOrientation.cameraOrientation).perform([detectFaceRequest])
     }
     
     private func faceFrame(from boundingBox: CGRect) -> CGRect {
@@ -93,4 +96,3 @@ class ViewController: UIViewController {
         return CGRect(origin: origin, size: size)
     }
 }
-

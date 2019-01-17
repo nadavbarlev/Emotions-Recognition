@@ -8,8 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		052E878521F087F4009FB062 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052E878421F087F4009FB062 /* Network.swift */; };
-		052E878721F08829009FB062 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052E878621F08829009FB062 /* NetworkError.swift */; };
 		052E878921F08841009FB062 /* NetworkMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052E878821F08841009FB062 /* NetworkMethods.swift */; };
+		052E878D21F0C1CC009FB062 /* UIDeviceOrientationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052E878C21F0C1CC009FB062 /* UIDeviceOrientationExtension.swift */; };
+		052E878F21F0C379009FB062 /* CIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052E878E21F0C379009FB062 /* CIImageExtension.swift */; };
+		052E879121F0C9BF009FB062 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052E879021F0C9BF009FB062 /* StringExtension.swift */; };
+		052E879321F0C9F1009FB062 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052E879221F0C9F1009FB062 /* UIImageExtension.swift */; };
+		052E879721F0CE7A009FB062 /* EmotionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052E879621F0CE7A009FB062 /* EmotionService.swift */; };
+		052E879921F0DB50009FB062 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052E879821F0DB50009FB062 /* NetworkError.swift */; };
 		05D9832321D956FA0034947D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D9832221D956FA0034947D /* AppDelegate.swift */; };
 		05D9832521D956FA0034947D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D9832421D956FA0034947D /* ViewController.swift */; };
 		05D9832821D956FA0034947D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05D9832621D956FA0034947D /* Main.storyboard */; };
@@ -20,8 +25,13 @@
 
 /* Begin PBXFileReference section */
 		052E878421F087F4009FB062 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
-		052E878621F08829009FB062 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		052E878821F08841009FB062 /* NetworkMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMethods.swift; sourceTree = "<group>"; };
+		052E878C21F0C1CC009FB062 /* UIDeviceOrientationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceOrientationExtension.swift; sourceTree = "<group>"; };
+		052E878E21F0C379009FB062 /* CIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIImageExtension.swift; sourceTree = "<group>"; };
+		052E879021F0C9BF009FB062 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		052E879221F0C9F1009FB062 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		052E879621F0CE7A009FB062 /* EmotionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionService.swift; sourceTree = "<group>"; };
+		052E879821F0DB50009FB062 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		05D9831F21D956FA0034947D /* FaceIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FaceIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05D9832221D956FA0034947D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		05D9832421D956FA0034947D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +59,7 @@
 		052E878221F087B7009FB062 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				052E878B21F0C19E009FB062 /* Extensions */,
 				052E878A21F0889C009FB062 /* Network */,
 			);
 			path = Others;
@@ -58,10 +69,37 @@
 			isa = PBXGroup;
 			children = (
 				052E878421F087F4009FB062 /* Network.swift */,
-				052E878621F08829009FB062 /* NetworkError.swift */,
+				052E879821F0DB50009FB062 /* NetworkError.swift */,
 				052E878821F08841009FB062 /* NetworkMethods.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		052E878B21F0C19E009FB062 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				052E878C21F0C1CC009FB062 /* UIDeviceOrientationExtension.swift */,
+				052E878E21F0C379009FB062 /* CIImageExtension.swift */,
+				052E879021F0C9BF009FB062 /* StringExtension.swift */,
+				052E879221F0C9F1009FB062 /* UIImageExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		052E879421F0CE57009FB062 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				052E879521F0CE61009FB062 /* Services */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		052E879521F0CE61009FB062 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				052E879621F0CE7A009FB062 /* EmotionService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		05D9831621D956FA0034947D = {
@@ -86,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				052E878221F087B7009FB062 /* Others */,
+				052E879421F0CE57009FB062 /* Model */,
 				05D9832221D956FA0034947D /* AppDelegate.swift */,
 				05D9832421D956FA0034947D /* ViewController.swift */,
 				05D9832621D956FA0034947D /* Main.storyboard */,
@@ -234,10 +273,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				05D9832521D956FA0034947D /* ViewController.swift in Sources */,
-				052E878721F08829009FB062 /* NetworkError.swift in Sources */,
+				052E878D21F0C1CC009FB062 /* UIDeviceOrientationExtension.swift in Sources */,
+				052E878F21F0C379009FB062 /* CIImageExtension.swift in Sources */,
+				052E879721F0CE7A009FB062 /* EmotionService.swift in Sources */,
+				052E879121F0C9BF009FB062 /* StringExtension.swift in Sources */,
+				052E879321F0C9F1009FB062 /* UIImageExtension.swift in Sources */,
 				052E878921F08841009FB062 /* NetworkMethods.swift in Sources */,
 				05D9832321D956FA0034947D /* AppDelegate.swift in Sources */,
 				052E878521F087F4009FB062 /* Network.swift in Sources */,
+				052E879921F0DB50009FB062 /* NetworkError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

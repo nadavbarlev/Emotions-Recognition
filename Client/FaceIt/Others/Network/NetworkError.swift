@@ -96,4 +96,5 @@ public enum NetworkError: Error {
             self = .Unknown
         }
     }
+    
 }
