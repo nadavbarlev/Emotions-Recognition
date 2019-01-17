@@ -57,7 +57,6 @@ class ViewController: UIViewController {
         _ = scannedFaceView.map { $0.removeFromSuperview() }
         scannedFaceView.removeAll()
       
-        
         // Get current image captured
         guard let capturedImage = sceneView.session.currentFrame?.capturedImage else { return }
         let image = CIImage.init(cvPixelBuffer: capturedImage)

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		052E878521F087F4009FB062 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052E878421F087F4009FB062 /* Network.swift */; };
+		052E878721F08829009FB062 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052E878621F08829009FB062 /* NetworkError.swift */; };
+		052E878921F08841009FB062 /* NetworkMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052E878821F08841009FB062 /* NetworkMethods.swift */; };
 		05D9832321D956FA0034947D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D9832221D956FA0034947D /* AppDelegate.swift */; };
 		05D9832521D956FA0034947D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D9832421D956FA0034947D /* ViewController.swift */; };
 		05D9832821D956FA0034947D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05D9832621D956FA0034947D /* Main.storyboard */; };
@@ -16,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		052E878421F087F4009FB062 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		052E878621F08829009FB062 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		052E878821F08841009FB062 /* NetworkMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMethods.swift; sourceTree = "<group>"; };
 		05D9831F21D956FA0034947D /* FaceIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FaceIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05D9832221D956FA0034947D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		05D9832421D956FA0034947D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -40,6 +46,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		052E878221F087B7009FB062 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				052E878A21F0889C009FB062 /* Network */,
+			);
+			path = Others;
+			sourceTree = "<group>";
+		};
+		052E878A21F0889C009FB062 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				052E878421F087F4009FB062 /* Network.swift */,
+				052E878621F08829009FB062 /* NetworkError.swift */,
+				052E878821F08841009FB062 /* NetworkMethods.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		05D9831621D956FA0034947D = {
 			isa = PBXGroup;
 			children = (
@@ -61,6 +85,7 @@
 		05D9832121D956FA0034947D /* FaceIt */ = {
 			isa = PBXGroup;
 			children = (
+				052E878221F087B7009FB062 /* Others */,
 				05D9832221D956FA0034947D /* AppDelegate.swift */,
 				05D9832421D956FA0034947D /* ViewController.swift */,
 				05D9832621D956FA0034947D /* Main.storyboard */,
@@ -85,7 +110,6 @@
 				8914A5C4D26BB7C41B547BBD /* Pods-FaceIt.debug.xcconfig */,
 				F4CB57F2A94FDF28EE25601A /* Pods-FaceIt.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -210,7 +234,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				05D9832521D956FA0034947D /* ViewController.swift in Sources */,
+				052E878721F08829009FB062 /* NetworkError.swift in Sources */,
+				052E878921F08841009FB062 /* NetworkMethods.swift in Sources */,
 				05D9832321D956FA0034947D /* AppDelegate.swift in Sources */,
+				052E878521F087F4009FB062 /* Network.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
