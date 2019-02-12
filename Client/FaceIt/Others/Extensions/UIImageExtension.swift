@@ -11,7 +11,7 @@ import  UIKit
 extension UIImage {
     
     func toBase64() -> String? {
-        guard let imageData = self.pngData() else { return nil }
-        return imageData.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
+        guard let imageData = self.jpegData(compressionQuality: 0.8) else { return nil }
+        return imageData.base64EncodedString()
     }
 }

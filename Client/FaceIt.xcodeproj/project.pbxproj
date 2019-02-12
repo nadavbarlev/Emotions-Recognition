@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05130EE72211B126006BA697 /* VNFaceObservationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05130EE62211B125006BA697 /* VNFaceObservationExtension.swift */; };
+		05130EEA2211B8FC006BA697 /* FaceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05130EE92211B8FC006BA697 /* FaceCollectionViewCell.swift */; };
 		052E878521F087F4009FB062 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052E878421F087F4009FB062 /* Network.swift */; };
 		052E878921F08841009FB062 /* NetworkMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052E878821F08841009FB062 /* NetworkMethods.swift */; };
 		052E878D21F0C1CC009FB062 /* UIDeviceOrientationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052E878C21F0C1CC009FB062 /* UIDeviceOrientationExtension.swift */; };
@@ -24,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		05130EE62211B125006BA697 /* VNFaceObservationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VNFaceObservationExtension.swift; sourceTree = "<group>"; };
+		05130EE92211B8FC006BA697 /* FaceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FaceCollectionViewCell.swift; path = FaceIt/Controllers/FaceCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
 		052E878421F087F4009FB062 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		052E878821F08841009FB062 /* NetworkMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMethods.swift; sourceTree = "<group>"; };
 		052E878C21F0C1CC009FB062 /* UIDeviceOrientationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceOrientationExtension.swift; sourceTree = "<group>"; };
@@ -56,6 +60,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		05130EE4220DEF94006BA697 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				05D9832421D956FA0034947D /* ViewController.swift */,
+				05130EE92211B8FC006BA697 /* FaceCollectionViewCell.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		05130EE5220DEFBE006BA697 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				05D9832621D956FA0034947D /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		052E878221F087B7009FB062 /* Others */ = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +99,7 @@
 		052E878B21F0C19E009FB062 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				05130EE62211B125006BA697 /* VNFaceObservationExtension.swift */,
 				052E878C21F0C1CC009FB062 /* UIDeviceOrientationExtension.swift */,
 				052E878E21F0C379009FB062 /* CIImageExtension.swift */,
 				052E879021F0C9BF009FB062 /* StringExtension.swift */,
@@ -125,9 +147,9 @@
 			children = (
 				052E878221F087B7009FB062 /* Others */,
 				052E879421F0CE57009FB062 /* Model */,
+				05130EE4220DEF94006BA697 /* Controllers */,
+				05130EE5220DEFBE006BA697 /* Views */,
 				05D9832221D956FA0034947D /* AppDelegate.swift */,
-				05D9832421D956FA0034947D /* ViewController.swift */,
-				05D9832621D956FA0034947D /* Main.storyboard */,
 				05D9832921D956FC0034947D /* Assets.xcassets */,
 				05D9832B21D956FC0034947D /* LaunchScreen.storyboard */,
 				05D9832E21D956FC0034947D /* Info.plist */,
@@ -273,7 +295,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				05D9832521D956FA0034947D /* ViewController.swift in Sources */,
+				05130EEA2211B8FC006BA697 /* FaceCollectionViewCell.swift in Sources */,
 				052E878D21F0C1CC009FB062 /* UIDeviceOrientationExtension.swift in Sources */,
+				05130EE72211B126006BA697 /* VNFaceObservationExtension.swift in Sources */,
 				052E878F21F0C379009FB062 /* CIImageExtension.swift in Sources */,
 				052E879721F0CE7A009FB062 /* EmotionService.swift in Sources */,
 				052E879121F0C9BF009FB062 /* StringExtension.swift in Sources */,

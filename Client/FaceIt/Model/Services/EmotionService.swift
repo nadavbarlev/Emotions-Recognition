@@ -11,7 +11,7 @@ import UIKit
 class EmotionService {
     
     // MARK: Constants
-    let URL:String = "https://nadavbarlev.org/emotions"
+    let URL:String = "http://10.100.102.7:5000/v1/detect"
     
     // MARK: Properties
     static let shared = EmotionService()
@@ -28,7 +28,9 @@ class EmotionService {
             return
         }
         
-        Network.request(method: .post,url: URL ,parameters: ["image": imageAsString],
+        // print(imageAsString)
+        
+        Network.request(method: .post,url: URL ,parameters: ["base64_image": imageAsString],
         onSuccess: { (emojiID: String) in
             completion(emojiID)
         },
