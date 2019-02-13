@@ -11,12 +11,31 @@ import ARKit
 import Vision
 
 enum Emotions: Int {
-    case happy = 1, sad
+    case neutral_face = 0
+    case slightly_smiling_face
+    case frowning_face
+    case winking_face
+    case kissing_face_with_closed_eyes
+    case surprised_face
+    case pouting_face
+    case grinning_face
+    case winking_face_with_stuck_out_tongue
+    case face_with_open_mouth_and_cold_sweat
+    case nauseated_face
     
-    var toString: String {
+    var toEmojie: String {
         switch self {
-        case .happy: return "Happy"
-        case .sad:   return "Sad"
+        case .neutral_face: return "😐"
+        case .slightly_smiling_face: return "🙂"
+        case .frowning_face: return "☹️"
+        case .winking_face: return "😉"
+        case .kissing_face_with_closed_eyes: return "😚"
+        case .surprised_face: return "😯"
+        case .pouting_face: return "😡"
+        case .grinning_face: return "😀"
+        case .winking_face_with_stuck_out_tongue: return "😜"
+        case .face_with_open_mouth_and_cold_sweat: return "😰"
+        case .nauseated_face: return"🤢"
         }
     }
 }
@@ -46,7 +65,7 @@ class ViewController: UIViewController {
         
         // Start scan for faces
         sceneView.session.run(configuration)
-        scanTimer = Timer.scheduledTimer(timeInterval: 2,
+        scanTimer = Timer.scheduledTimer(timeInterval: 10,
                                          target: self,
                                          selector: #selector(scanForFaces),
                                          userInfo: nil,
@@ -107,7 +126,7 @@ class ViewController: UIViewController {
                         guard let emojiAsString = emojiID else { print("Server Error"); return }
                         guard let emojiAsInt = Int(emojiAsString), let emoji = Emotions(rawValue: emojiAsInt)
                             else { print("Invalid returned value"); return }
-                        print(emoji.toString)
+                        print(emoji.toEmojie)
                     }
                     
                     return faceView
