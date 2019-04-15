@@ -23,7 +23,6 @@
 		05D9832A21D956FC0034947D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05D9832921D956FC0034947D /* Assets.xcassets */; };
 		05D9832D21D956FC0034947D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05D9832B21D956FC0034947D /* LaunchScreen.storyboard */; };
 		05E7D1E722646A8900022AD5 /* Emotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E7D1E622646A8900022AD5 /* Emotion.swift */; };
-		05E7D1EA22646DF300022AD5 /* CNNEmotions.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 05E7D1E922646DF300022AD5 /* CNNEmotions.mlmodel */; };
 		DEA4406A2E1A8DDB73B2396C /* Pods_FaceIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1946055DFA5F46FE317AD0A1 /* Pods_FaceIt.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,7 +45,6 @@
 		05D9832C21D956FC0034947D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		05D9832E21D956FC0034947D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05E7D1E622646A8900022AD5 /* Emotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emotion.swift; sourceTree = "<group>"; };
-		05E7D1E922646DF300022AD5 /* CNNEmotions.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = CNNEmotions.mlmodel; sourceTree = "<group>"; };
 		1946055DFA5F46FE317AD0A1 /* Pods_FaceIt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FaceIt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8914A5C4D26BB7C41B547BBD /* Pods-FaceIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FaceIt.debug.xcconfig"; path = "Target Support Files/Pods-FaceIt/Pods-FaceIt.debug.xcconfig"; sourceTree = "<group>"; };
 		F4CB57F2A94FDF28EE25601A /* Pods-FaceIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FaceIt.release.xcconfig"; path = "Target Support Files/Pods-FaceIt/Pods-FaceIt.release.xcconfig"; sourceTree = "<group>"; };
@@ -174,7 +172,6 @@
 		05E7D1E822646DA600022AD5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				05E7D1E922646DF300022AD5 /* CNNEmotions.mlmodel */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -328,7 +325,6 @@
 				052E878921F08841009FB062 /* NetworkMethods.swift in Sources */,
 				05D9832321D956FA0034947D /* AppDelegate.swift in Sources */,
 				052E878521F087F4009FB062 /* Network.swift in Sources */,
-				05E7D1EA22646DF300022AD5 /* CNNEmotions.mlmodel in Sources */,
 				052E879921F0DB50009FB062 /* NetworkError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
