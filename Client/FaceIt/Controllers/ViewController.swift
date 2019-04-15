@@ -10,36 +10,6 @@ import UIKit
 import ARKit
 import Vision
 
-enum Emotions: Int {
-    case neutral_face = 0
-    case slightly_smiling_face
-    case frowning_face
-    case winking_face
-    case kissing_face_with_closed_eyes
-    case surprised_face
-    case pouting_face
-    case grinning_face
-    case winking_face_with_stuck_out_tongue
-    case face_with_open_mouth_and_cold_sweat
-    case nauseated_face
-    
-    var toEmojie: String {
-        switch self {
-        case .neutral_face: return "😐"
-        case .slightly_smiling_face: return "🙂"
-        case .frowning_face: return "☹️"
-        case .winking_face: return "😉"
-        case .kissing_face_with_closed_eyes: return "😚"
-        case .surprised_face: return "😯"
-        case .pouting_face: return "😡"
-        case .grinning_face: return "😀"
-        case .winking_face_with_stuck_out_tongue: return "😜"
-        case .face_with_open_mouth_and_cold_sweat: return "😰"
-        case .nauseated_face: return"🤢"
-        }
-    }
-}
-
 class ViewController: UIViewController {
     
     // MARK: Properties
@@ -47,6 +17,7 @@ class ViewController: UIViewController {
     var scannedFaceView = [UIView]()
     var scannedFaceImage = [UIImage]()
     let configuration = ARWorldTrackingConfiguration()
+    var emotionModel: VNCoreMLModel?
     
     // MARK: Outlets
     @IBOutlet weak var sceneView: ARSCNView!
@@ -55,6 +26,8 @@ class ViewController: UIViewController {
     // MARK: LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        emotionModel = try? VNCoreMLModel(for: CNNEmotions().model)
         
         collectionViewFaces.dataSource = self
         collectionViewFaces.delegate   = self
@@ -65,7 +38,7 @@ class ViewController: UIViewController {
         
         // Start scan for faces
         sceneView.session.run(configuration)
-        scanTimer = Timer.scheduledTimer(timeInterval: 10,
+        scanTimer = Timer.scheduledTimer(timeInterval: 3,
                                          target: self,
                                          selector: #selector(scanForFaces),
                                          userInfo: nil,
@@ -121,21 +94,31 @@ class ViewController: UIViewController {
                     self?.scannedFaceImage.append(imageCropped)
                     self?.collectionViewFaces.reloadData()
                     
-                    // Get recognition
-                    EmotionService.shared.emotion(of: imageCropped) { (emojiID: String?) in
+                    // Get emotion from server
+                    /* EmotionService.shared.emotion(of: imageCropped) { (emojiID: String?) in
                         guard let emojiAsString = emojiID else { print("Server Error"); return }
-                        guard let emojiAsInt = Int(emojiAsString), let emoji = Emotions(rawValue: emojiAsInt)
+                        guard let emojiAsInt = Int(emojiAsString), let emoji = Emotion(rawValue: emojiAsInt)
                             else { print("Invalid returned value"); return }
                         print(emoji.toEmojie)
+                    } */
+                        
+                    // Get emotion from local model
+                    guard let emotionModel = self?.emotionModel else { return UIView() }
+                    let detectEmotionRequest = VNCoreMLRequest(model: emotionModel) { (request: VNRequest, error: Error?) in
+                        guard let faceEmotion = request.results?.first as? VNClassificationObservation else { return }
+                        print(faceEmotion.identifier)
                     }
-                    
+                    try? VNImageRequestHandler(cgImage: faceCGImage, orientation: UIDeviceOrientation.cameraOrientation)
+                        .perform([detectEmotionRequest])
+
                     return faceView
                 }
             }
         }
         
         // Run face detection
-        try? VNImageRequestHandler(ciImage: ciImage, orientation: UIDeviceOrientation.cameraOrientation).perform([detectFaceRequest])
+        try? VNImageRequestHandler(ciImage: ciImage, orientation: UIDeviceOrientation.cameraOrientation)
+            .perform([detectFaceRequest])
     }
     
     private func mark(_ face: VNFaceObservation) -> UIView {
