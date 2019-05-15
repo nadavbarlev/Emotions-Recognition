@@ -24,6 +24,7 @@
 		05D9832D21D956FC0034947D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05D9832B21D956FC0034947D /* LaunchScreen.storyboard */; };
 		05E7D1E722646A8900022AD5 /* Emotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E7D1E622646A8900022AD5 /* Emotion.swift */; };
 		DEA4406A2E1A8DDB73B2396C /* Pods_FaceIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1946055DFA5F46FE317AD0A1 /* Pods_FaceIt.framework */; };
+		F28E6631228C3F830099CEA8 /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = F28E6630228C3F830099CEA8 /* Assets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,8 @@
 		05E7D1E622646A8900022AD5 /* Emotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emotion.swift; sourceTree = "<group>"; };
 		1946055DFA5F46FE317AD0A1 /* Pods_FaceIt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FaceIt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8914A5C4D26BB7C41B547BBD /* Pods-FaceIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FaceIt.debug.xcconfig"; path = "Target Support Files/Pods-FaceIt/Pods-FaceIt.debug.xcconfig"; sourceTree = "<group>"; };
+		F28E6627228C36C00099CEA8 /* RotemModel.h5 */ = {isa = PBXFileReference; lastKnownFileType = file; path = RotemModel.h5; sourceTree = "<group>"; };
+		F28E6630228C3F830099CEA8 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
 		F4CB57F2A94FDF28EE25601A /* Pods-FaceIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FaceIt.release.xcconfig"; path = "Target Support Files/Pods-FaceIt/Pods-FaceIt.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -149,6 +152,8 @@
 		05D9832121D956FA0034947D /* FaceIt */ = {
 			isa = PBXGroup;
 			children = (
+				F28E6630228C3F830099CEA8 /* Assets */,
+				F28E6627228C36C00099CEA8 /* RotemModel.h5 */,
 				052E878221F087B7009FB062 /* Others */,
 				052E879421F0CE57009FB062 /* Model */,
 				05130EE4220DEF94006BA697 /* Controllers */,
@@ -254,6 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				05D9832D21D956FC0034947D /* LaunchScreen.storyboard in Resources */,
+				F28E6631228C3F830099CEA8 /* Assets in Resources */,
 				05D9832A21D956FC0034947D /* Assets.xcassets in Resources */,
 				05D9832821D956FA0034947D /* Main.storyboard in Resources */,
 			);
@@ -473,7 +479,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B8V7K6U9ZU;
+				DEVELOPMENT_TEAM = 7V2Y762R5H;
 				INFOPLIST_FILE = FaceIt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -492,7 +498,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B8V7K6U9ZU;
+				DEVELOPMENT_TEAM = 7V2Y762R5H;
 				INFOPLIST_FILE = FaceIt/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
