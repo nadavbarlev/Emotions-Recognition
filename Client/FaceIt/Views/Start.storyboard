@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="loq-83-4Q5">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Walkthrough View Controller-->
+        <scene sceneID="UgX-kX-LQS">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="loq-83-4Q5" customClass="WalkthroughViewController" customModule="FaceIt" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LCw-DS-zuh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1139" y="-2"/>
+        </scene>
+        <!--Walkthrough Content View Controller-->
+        <scene sceneID="IkA-y2-NGf">
+            <objects>
+                <viewController storyboardIdentifier="WalkthroughContentViewController" id="sSW-L2-Bsw" customClass="WalkthroughContentViewController" customModule="FaceIt" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hN4-VM-O4a">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u9p-9a-GOo">
+                                <rect key="frame" x="0.0" y="254" width="414" height="398.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Face It" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F5f-ZU-gU4">
+                                        <rect key="frame" x="143" y="8" width="128" height="72"/>
+                                        <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="45"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4qn-Ek-gsR">
+                                        <rect key="frame" x="157" y="112" width="100" height="95"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="95" id="0Cu-co-xeq"/>
+                                            <constraint firstAttribute="width" constant="100" id="xrb-bX-ATb"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instush is a simple way to capture and share the world’s moments." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jwn-u7-bTI">
+                                        <rect key="frame" x="16" y="239" width="382" height="70.5"/>
+                                        <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="clV-fb-j7Z">
+                                        <rect key="frame" x="16" y="353.5" width="382" height="37"/>
+                                    </pageControl>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="clV-fb-j7Z" secondAttribute="trailing" constant="16" id="8A3-hD-5g7"/>
+                                    <constraint firstItem="4qn-Ek-gsR" firstAttribute="centerX" secondItem="F5f-ZU-gU4" secondAttribute="centerX" id="8cM-kd-wFB"/>
+                                    <constraint firstItem="clV-fb-j7Z" firstAttribute="leading" secondItem="u9p-9a-GOo" secondAttribute="leading" constant="16" id="CZw-Wd-CgM"/>
+                                    <constraint firstAttribute="bottom" secondItem="clV-fb-j7Z" secondAttribute="bottom" constant="8" id="CeJ-DI-AKu"/>
+                                    <constraint firstItem="Jwn-u7-bTI" firstAttribute="top" secondItem="4qn-Ek-gsR" secondAttribute="bottom" constant="32" id="LT3-SF-Gt7"/>
+                                    <constraint firstItem="4qn-Ek-gsR" firstAttribute="top" secondItem="F5f-ZU-gU4" secondAttribute="bottom" constant="32" id="O2m-e4-g9r"/>
+                                    <constraint firstItem="clV-fb-j7Z" firstAttribute="top" secondItem="Jwn-u7-bTI" secondAttribute="bottom" constant="44" id="XcW-uk-ziz"/>
+                                    <constraint firstItem="F5f-ZU-gU4" firstAttribute="centerX" secondItem="u9p-9a-GOo" secondAttribute="centerX" id="iru-Im-9Dm"/>
+                                    <constraint firstAttribute="trailing" secondItem="Jwn-u7-bTI" secondAttribute="trailing" constant="16" id="qyM-sR-WYV"/>
+                                    <constraint firstItem="Jwn-u7-bTI" firstAttribute="leading" secondItem="u9p-9a-GOo" secondAttribute="leading" constant="16" id="sCz-cR-b8N"/>
+                                    <constraint firstItem="F5f-ZU-gU4" firstAttribute="top" secondItem="u9p-9a-GOo" secondAttribute="top" constant="8" id="uy2-Uh-N3I"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8vf-TR-5b5">
+                                <rect key="frame" x="158" y="794" width="98" height="52"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="25"/>
+                                <state key="normal" title="Get Start">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="start:" destination="sSW-L2-Bsw" eventType="touchUpInside" id="lqk-vB-Xtf"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.8220045672455415" green="0.8220045672455415" blue="0.8220045672455415" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="u9p-9a-GOo" firstAttribute="leading" secondItem="HSL-ys-7KK" secondAttribute="leading" id="DDH-rh-Z1s"/>
+                            <constraint firstItem="8vf-TR-5b5" firstAttribute="centerX" secondItem="HSL-ys-7KK" secondAttribute="centerX" id="H7O-r2-Ws8"/>
+                            <constraint firstItem="u9p-9a-GOo" firstAttribute="centerY" secondItem="HSL-ys-7KK" secondAttribute="centerY" id="VA3-FO-5w2"/>
+                            <constraint firstItem="HSL-ys-7KK" firstAttribute="trailing" secondItem="u9p-9a-GOo" secondAttribute="trailing" id="Zt6-YS-p1T"/>
+                            <constraint firstItem="HSL-ys-7KK" firstAttribute="bottom" secondItem="8vf-TR-5b5" secondAttribute="bottom" constant="16" id="vTm-pm-5eg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="HSL-ys-7KK"/>
+                    </view>
+                    <connections>
+                        <outlet property="buttonStart" destination="8vf-TR-5b5" id="i9O-yV-dHw"/>
+                        <outlet property="imageViewEmoji" destination="4qn-Ek-gsR" id="FtW-8i-x5D"/>
+                        <outlet property="labelContent" destination="Jwn-u7-bTI" id="d2c-g0-PUv"/>
+                        <outlet property="labelTitle" destination="F5f-ZU-gU4" id="0PO-o4-Q8D"/>
+                        <outlet property="pageControl" destination="clV-fb-j7Z" id="v9d-OP-sHc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q6y-Rj-lVK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-313.04347826086956" y="-2.0089285714285712"/>
+        </scene>
+    </scenes>
+</document>

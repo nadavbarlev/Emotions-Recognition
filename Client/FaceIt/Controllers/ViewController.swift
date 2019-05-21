@@ -27,7 +27,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        emotionModel = try? VNCoreMLModel(for: CNNEmotions().model)
+        self.title = "Face It"
+        self.navigationController?.title = "Face It"
+        
+        emotionModel = try? VNCoreMLModel(for: EmotionsModel().model)
         
         collectionViewFaces.dataSource = self
         collectionViewFaces.delegate   = self
@@ -126,7 +129,7 @@ class ViewController: UIViewController {
                                       imageWidth: self.sceneView.bounds.width)
         let faceView = UIView(frame: faceRect)
         faceView.layer.borderColor = UIColor.black.cgColor
-        faceView.layer.borderWidth = 3
+        faceView.layer.borderWidth = 2
         return faceView
     }
     
