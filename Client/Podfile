@@ -1,8 +1,12 @@
+source 'https://cdn.jsdelivr.net/cocoa/'
+
+
 platform :ios, '10.0'
 
 target 'FaceIt' do
   
   use_frameworks!
   pod 'Alamofire', '~> 5.0.0.beta.1'
+  pod 'Toast-Swift', '~> 4.0.0'
 
 end

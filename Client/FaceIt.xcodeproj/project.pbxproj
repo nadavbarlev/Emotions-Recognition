@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -21,6 +21,7 @@
 		0565BFC42293FBC100E79447 /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0565BFC32293FBC100E79447 /* Start.storyboard */; };
 		0565BFC62293FCF400E79447 /* WalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0565BFC52293FCF400E79447 /* WalkthroughViewController.swift */; };
 		0565BFC82293FDBE00E79447 /* WalkthroughContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0565BFC72293FDBE00E79447 /* WalkthroughContentViewController.swift */; };
+		05B9DB3A229C1D57000168DC /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9DB39229C1D57000168DC /* UIViewControllerExtension.swift */; };
 		05D9832321D956FA0034947D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D9832221D956FA0034947D /* AppDelegate.swift */; };
 		05D9832521D956FA0034947D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D9832421D956FA0034947D /* ViewController.swift */; };
 		05D9832821D956FA0034947D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05D9832621D956FA0034947D /* Main.storyboard */; };
@@ -45,6 +46,7 @@
 		0565BFC32293FBC100E79447 /* Start.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
 		0565BFC52293FCF400E79447 /* WalkthroughViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughViewController.swift; sourceTree = "<group>"; };
 		0565BFC72293FDBE00E79447 /* WalkthroughContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughContentViewController.swift; sourceTree = "<group>"; };
+		05B9DB39229C1D57000168DC /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		05D9831F21D956FA0034947D /* FaceIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FaceIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05D9832221D956FA0034947D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		05D9832421D956FA0034947D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				052E878E21F0C379009FB062 /* CIImageExtension.swift */,
 				052E879021F0C9BF009FB062 /* StringExtension.swift */,
 				052E879221F0C9F1009FB062 /* UIImageExtension.swift */,
+				05B9DB39229C1D57000168DC /* UIViewControllerExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -305,16 +308,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FaceIt/Pods-FaceIt-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-FaceIt/Pods-FaceIt-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-FaceIt/Pods-FaceIt-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -332,6 +330,7 @@
 				05130EEA2211B8FC006BA697 /* FaceCollectionViewCell.swift in Sources */,
 				052E878D21F0C1CC009FB062 /* UIDeviceOrientationExtension.swift in Sources */,
 				05130EE72211B126006BA697 /* VNFaceObservationExtension.swift in Sources */,
+				05B9DB3A229C1D57000168DC /* UIViewControllerExtension.swift in Sources */,
 				052E878F21F0C379009FB062 /* CIImageExtension.swift in Sources */,
 				052E879721F0CE7A009FB062 /* EmotionService.swift in Sources */,
 				052E879121F0C9BF009FB062 /* StringExtension.swift in Sources */,

@@ -18,34 +18,49 @@ class ViewController: UIViewController {
     var scannedFaceImage = [UIImage]()
     let configuration = ARWorldTrackingConfiguration()
     var emotionModel: VNCoreMLModel?
+    var isScanActive: Bool = false
     
     // MARK: Outlets
     @IBOutlet weak var sceneView: ARSCNView!
     @IBOutlet weak var collectionViewFaces: UICollectionView!
+    @IBOutlet weak var consCollectionViewFacesHeight: NSLayoutConstraint!
+    @IBOutlet weak var barItemToggleScan: UIBarButtonItem!
     
-    // MARK: LifeCycle Methods
+    // MARK: Actions
+    @objc func toggleScan() {
+        if isScanActive {
+            setupStopScan()
+            self.showBottomToast(onView: self.view, withMessage: "Stop Scanning...")
+        } else {
+            setupPlayScan()
+            self.showBottomToast(onView: self.view, withMessage: "Start Scanning...")
+        }
+        
+        isScanActive = !isScanActive
+    }
+    
+    // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.title = "Face It"
-        self.navigationController?.title = "Face It"
         
+        // Load Emotion Model
         emotionModel = try? VNCoreMLModel(for: EmotionsModel().model)
         
+        // Set scan to Not Active
+        isScanActive = false
+        navigationItem.rightBarButtonItem =
+            UIBarButtonItem(barButtonSystemItem: .play, target: self, action: #selector(toggleScan))
+        navigationItem.rightBarButtonItem?.tintColor = .black
+        
+        // Collection data source and delegate
         collectionViewFaces.dataSource = self
         collectionViewFaces.delegate   = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        // Start scan for faces
         sceneView.session.run(configuration)
-        scanTimer = Timer.scheduledTimer(timeInterval: 3,
-                                         target: self,
-                                         selector: #selector(scanForFaces),
-                                         userInfo: nil,
-                                         repeats: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -57,14 +72,28 @@ class ViewController: UIViewController {
     }
 
     // MARK: Methods
+    private func setupPlayScan() {
+        navigationItem.rightBarButtonItem =
+            UIBarButtonItem(barButtonSystemItem: .pause, target: self, action: #selector(toggleScan))
+        navigationItem.rightBarButtonItem?.tintColor = .black
+        scanTimer = Timer.scheduledTimer(timeInterval: 3,
+                                         target: self,
+                                         selector: #selector(scanForFaces),
+                                         userInfo: nil,
+                                         repeats: true)
+    }
+    
+    private func setupStopScan() {
+        clearData()
+        navigationItem.rightBarButtonItem =
+            UIBarButtonItem(barButtonSystemItem: .play, target: self, action: #selector(toggleScan))
+        navigationItem.rightBarButtonItem?.tintColor = .black
+        scanTimer?.invalidate()
+    }
+    
     @objc private func scanForFaces() {
         
-        // Clear previous faces from memory and from UI
-        _ = scannedFaceView.map { $0.removeFromSuperview() }
-        scannedFaceView.removeAll()
-        
-        scannedFaceImage.removeAll()
-        collectionViewFaces.reloadData()
+        clearData()
         
         // Get current image captured
         guard let cvBufferCapturedImage = sceneView.session.currentFrame?.capturedImage else { return }
@@ -122,6 +151,14 @@ class ViewController: UIViewController {
         // Run face detection
         try? VNImageRequestHandler(ciImage: ciImage, orientation: UIDeviceOrientation.cameraOrientation)
             .perform([detectFaceRequest])
+    }
+    
+    /* Clear previous faces from memory and from UI */
+    private func clearData() {
+        _ = scannedFaceView.map { $0.removeFromSuperview() }
+        scannedFaceView.removeAll()
+        scannedFaceImage.removeAll()
+        collectionViewFaces.reloadData()
     }
     
     private func mark(_ face: VNFaceObservation) -> UIView {
