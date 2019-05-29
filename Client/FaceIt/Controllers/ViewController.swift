@@ -25,6 +25,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var collectionViewFaces: UICollectionView!
     @IBOutlet weak var consCollectionViewFacesHeight: NSLayoutConstraint!
     @IBOutlet weak var barItemToggleScan: UIBarButtonItem!
+    @IBOutlet weak var titleRecognition: UITextView!
+    
+    @IBOutlet weak var tmuna: UIImageView!
     
     // MARK: Actions
     @objc func toggleScan() {
@@ -138,7 +141,7 @@ class ViewController: UIViewController {
                     guard let emotionModel = self?.emotionModel else { return UIView() }
                     let detectEmotionRequest = VNCoreMLRequest(model: emotionModel) { (request: VNRequest, error: Error?) in
                         guard let faceEmotion = request.results?.first as? VNClassificationObservation else { return }
-                        print(faceEmotion.identifier)
+                        self?.titleRecognition.text? = String(faceEmotion.identifier)
                     }
                     try? VNImageRequestHandler(cgImage: faceCGImage, orientation: UIDeviceOrientation.cameraOrientation)
                         .perform([detectEmotionRequest])
