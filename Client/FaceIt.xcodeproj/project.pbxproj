@@ -22,6 +22,9 @@
 		0565BFC62293FCF400E79447 /* WalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0565BFC52293FCF400E79447 /* WalkthroughViewController.swift */; };
 		0565BFC82293FDBE00E79447 /* WalkthroughContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0565BFC72293FDBE00E79447 /* WalkthroughContentViewController.swift */; };
 		05B9DB3A229C1D57000168DC /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9DB39229C1D57000168DC /* UIViewControllerExtension.swift */; };
+		05B9ED1622A4FC5F000168DC /* MarkFaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9ED1522A4FC5F000168DC /* MarkFaceView.swift */; };
+		05B9ED1822A4FD7E000168DC /* MarkFaceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05B9ED1722A4FD7E000168DC /* MarkFaceView.xib */; };
+		05B9ED1A22A505FA000168DC /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9ED1922A505FA000168DC /* UIViewExtension.swift */; };
 		05D9832321D956FA0034947D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D9832221D956FA0034947D /* AppDelegate.swift */; };
 		05D9832521D956FA0034947D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D9832421D956FA0034947D /* ViewController.swift */; };
 		05D9832821D956FA0034947D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05D9832621D956FA0034947D /* Main.storyboard */; };
@@ -47,6 +50,9 @@
 		0565BFC52293FCF400E79447 /* WalkthroughViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughViewController.swift; sourceTree = "<group>"; };
 		0565BFC72293FDBE00E79447 /* WalkthroughContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughContentViewController.swift; sourceTree = "<group>"; };
 		05B9DB39229C1D57000168DC /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		05B9ED1522A4FC5F000168DC /* MarkFaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkFaceView.swift; sourceTree = "<group>"; };
+		05B9ED1722A4FD7E000168DC /* MarkFaceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarkFaceView.xib; sourceTree = "<group>"; };
+		05B9ED1922A505FA000168DC /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		05D9831F21D956FA0034947D /* FaceIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FaceIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05D9832221D956FA0034947D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		05D9832421D956FA0034947D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +86,7 @@
 				05130EE92211B8FC006BA697 /* FaceCollectionViewCell.swift */,
 				0565BFC52293FCF400E79447 /* WalkthroughViewController.swift */,
 				0565BFC72293FDBE00E79447 /* WalkthroughContentViewController.swift */,
+				05B9ED1522A4FC5F000168DC /* MarkFaceView.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -90,6 +97,7 @@
 				05D9832621D956FA0034947D /* Main.storyboard */,
 				0565BFC32293FBC100E79447 /* Start.storyboard */,
 				05D9832B21D956FC0034947D /* LaunchScreen.storyboard */,
+				05B9ED1722A4FD7E000168DC /* MarkFaceView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -123,6 +131,7 @@
 				052E879021F0C9BF009FB062 /* StringExtension.swift */,
 				052E879221F0C9F1009FB062 /* UIImageExtension.swift */,
 				05B9DB39229C1D57000168DC /* UIViewControllerExtension.swift */,
+				05B9ED1922A505FA000168DC /* UIViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -271,6 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				05D9832D21D956FC0034947D /* LaunchScreen.storyboard in Resources */,
+				05B9ED1822A4FD7E000168DC /* MarkFaceView.xib in Resources */,
 				0565BFC42293FBC100E79447 /* Start.storyboard in Resources */,
 				05D9832A21D956FC0034947D /* Assets.xcassets in Resources */,
 				05D9832821D956FA0034947D /* Main.storyboard in Resources */,
@@ -336,8 +346,10 @@
 				052E879121F0C9BF009FB062 /* StringExtension.swift in Sources */,
 				05E7D1E722646A8900022AD5 /* Emotion.swift in Sources */,
 				052E879321F0C9F1009FB062 /* UIImageExtension.swift in Sources */,
+				05B9ED1622A4FC5F000168DC /* MarkFaceView.swift in Sources */,
 				0565BFC62293FCF400E79447 /* WalkthroughViewController.swift in Sources */,
 				052E878921F08841009FB062 /* NetworkMethods.swift in Sources */,
+				05B9ED1A22A505FA000168DC /* UIViewExtension.swift in Sources */,
 				0565BFC82293FDBE00E79447 /* WalkthroughContentViewController.swift in Sources */,
 				05D9832321D956FA0034947D /* AppDelegate.swift in Sources */,
 				052E878521F087F4009FB062 /* Network.swift in Sources */,

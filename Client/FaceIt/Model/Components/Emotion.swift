@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 enum Emotion: Int {
     
     case neutral_face = 0
