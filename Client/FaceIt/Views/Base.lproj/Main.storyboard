@@ -58,15 +58,6 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Recognition" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="g0k-6S-QY0">
-                                <rect key="frame" x="111" y="94" width="152" height="61"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -90,7 +81,6 @@
                         <outlet property="collectionViewFaces" destination="rUC-F9-tgX" id="DrS-n4-z6D"/>
                         <outlet property="consCollectionViewFacesHeight" destination="Y5W-vM-pnq" id="7pP-64-sGl"/>
                         <outlet property="sceneView" destination="J8B-TW-JHW" id="Wnj-UJ-VV2"/>
-                        <outlet property="titleRecognition" destination="g0k-6S-QY0" id="Qn0-c5-GkD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
