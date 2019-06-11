@@ -6,36 +6,56 @@
 //  Copyright © 2019 Nadav Bar Lev. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 
 enum Emotion: Int {
     
-    case neutral_face = 0
-    case slightly_smiling_face
-    case frowning_face
-    case winking_face
-    case kissing_face_with_closed_eyes
-    case surprised_face
-    case pouting_face
-    case grinning_face
-    case winking_face_with_stuck_out_tongue
-    case face_with_open_mouth_and_cold_sweat
-    case nauseated_face
+    case angry_face = 0
+    case contempt_face
+    case disgust_face
+    case fear_face
+    case happiness_face
+    case sadness_face
+    case surprise_face
     
-    var toEmojie: String {
+    /* Computed Properties */
+    var toImage: UIImage {
         switch self {
-        case .neutral_face: return "😐"
-        case .slightly_smiling_face: return "🙂"
-        case .frowning_face: return "☹️"
-        case .winking_face: return "😉"
-        case .kissing_face_with_closed_eyes: return "😚"
-        case .surprised_face: return "😯"
-        case .pouting_face: return "😡"
-        case .grinning_face: return "😀"
-        case .winking_face_with_stuck_out_tongue: return "😜"
-        case .face_with_open_mouth_and_cold_sweat: return "😰"
-        case .nauseated_face: return"🤢"
+        case .angry_face: return UIImage(named: "emoji-angry")!
+        case .contempt_face: return UIImage(named: "emoji-contempt")!
+        case .disgust_face: return UIImage(named: "emojie-disgust")!
+        case .fear_face: return UIImage(named: "emoji-fear")!
+        case .happiness_face: return UIImage(named: "emoji-grinning")!
+        case .sadness_face: return UIImage(named: "emoji-sandness")!
+        case .surprise_face: return UIImage(named: "emoji-surprise")!
+        }
+    }
+    
+    static var neutral: UIImage {
+        return UIImage(named: "emoji-neutral")!
+    }
+    
+    /* Methods */
+    static func image(from description: String) -> UIImage {
+        switch description {
+        case "Anger", "Angry":
+            return UIImage(named: "emoji-angry")!
+        /*
+        case "Contempt":
+            return UIImage(named: "emoji-contempt")!
+        */
+        case "Disgust":
+            return UIImage(named: "emojie-disgust")!
+        case "Fear":
+            return UIImage(named: "emoji-fear")!
+        case "Happiness", "Happy":
+            return UIImage(named: "emoji-grinning")!
+        case "Sadness", "Sad":
+            return UIImage(named: "emoji-sandness")!
+        case "Surprise":
+            return UIImage(named: "emoji-surprise")!
+        default: return neutral
         }
     }
 }

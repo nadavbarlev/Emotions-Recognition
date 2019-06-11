@@ -17,7 +17,10 @@
 		052E879321F0C9F1009FB062 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052E879221F0C9F1009FB062 /* UIImageExtension.swift */; };
 		052E879721F0CE7A009FB062 /* EmotionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052E879621F0CE7A009FB062 /* EmotionService.swift */; };
 		052E879921F0DB50009FB062 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052E879821F0DB50009FB062 /* NetworkError.swift */; };
-		0565BFC12293F91600E79447 /* EmotionsModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 0565BFC02293F91600E79447 /* EmotionsModel.mlmodel */; };
+		05623A7222AD202A00479AF7 /* EmotionsConvModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 05623A7122AD202A00479AF7 /* EmotionsConvModel.mlmodel */; };
+		05623A7422AD31F100479AF7 /* CNNEmotions.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 05623A7322AD31F100479AF7 /* CNNEmotions.mlmodel */; };
+		05623A7622AE2CD000479AF7 /* EmotionsModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 05623A7522AE2CD000479AF7 /* EmotionsModel.mlmodel */; };
+		05623A7A22AE332300479AF7 /* convmodel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 05623A7922AE332300479AF7 /* convmodel.mlmodel */; };
 		0565BFC42293FBC100E79447 /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0565BFC32293FBC100E79447 /* Start.storyboard */; };
 		0565BFC62293FCF400E79447 /* WalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0565BFC52293FCF400E79447 /* WalkthroughViewController.swift */; };
 		0565BFC82293FDBE00E79447 /* WalkthroughContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0565BFC72293FDBE00E79447 /* WalkthroughContentViewController.swift */; };
@@ -45,7 +48,10 @@
 		052E879221F0C9F1009FB062 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		052E879621F0CE7A009FB062 /* EmotionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionService.swift; sourceTree = "<group>"; };
 		052E879821F0DB50009FB062 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
-		0565BFC02293F91600E79447 /* EmotionsModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = EmotionsModel.mlmodel; sourceTree = "<group>"; };
+		05623A7122AD202A00479AF7 /* EmotionsConvModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = EmotionsConvModel.mlmodel; sourceTree = "<group>"; };
+		05623A7322AD31F100479AF7 /* CNNEmotions.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = CNNEmotions.mlmodel; sourceTree = "<group>"; };
+		05623A7522AE2CD000479AF7 /* EmotionsModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = EmotionsModel.mlmodel; sourceTree = "<group>"; };
+		05623A7922AE332300479AF7 /* convmodel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = convmodel.mlmodel; sourceTree = "<group>"; };
 		0565BFC32293FBC100E79447 /* Start.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
 		0565BFC52293FCF400E79447 /* WalkthroughViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughViewController.swift; sourceTree = "<group>"; };
 		0565BFC72293FDBE00E79447 /* WalkthroughContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughContentViewController.swift; sourceTree = "<group>"; };
@@ -63,7 +69,6 @@
 		05E7D1E622646A8900022AD5 /* Emotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emotion.swift; sourceTree = "<group>"; };
 		1946055DFA5F46FE317AD0A1 /* Pods_FaceIt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FaceIt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8914A5C4D26BB7C41B547BBD /* Pods-FaceIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FaceIt.debug.xcconfig"; path = "Target Support Files/Pods-FaceIt/Pods-FaceIt.debug.xcconfig"; sourceTree = "<group>"; };
-		F28E6627228C36C00099CEA8 /* EmotionsModel.h5 */ = {isa = PBXFileReference; lastKnownFileType = file; path = EmotionsModel.h5; sourceTree = "<group>"; };
 		F4CB57F2A94FDF28EE25601A /* Pods-FaceIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FaceIt.release.xcconfig"; path = "Target Support Files/Pods-FaceIt/Pods-FaceIt.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -196,8 +201,10 @@
 		05E7D1E822646DA600022AD5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F28E6627228C36C00099CEA8 /* EmotionsModel.h5 */,
-				0565BFC02293F91600E79447 /* EmotionsModel.mlmodel */,
+				05623A7322AD31F100479AF7 /* CNNEmotions.mlmodel */,
+				05623A7522AE2CD000479AF7 /* EmotionsModel.mlmodel */,
+				05623A7122AD202A00479AF7 /* EmotionsConvModel.mlmodel */,
+				05623A7922AE332300479AF7 /* convmodel.mlmodel */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -341,19 +348,22 @@
 				052E878D21F0C1CC009FB062 /* UIDeviceOrientationExtension.swift in Sources */,
 				05130EE72211B126006BA697 /* VNFaceObservationExtension.swift in Sources */,
 				05B9DB3A229C1D57000168DC /* UIViewControllerExtension.swift in Sources */,
+				05623A7622AE2CD000479AF7 /* EmotionsModel.mlmodel in Sources */,
+				05623A7222AD202A00479AF7 /* EmotionsConvModel.mlmodel in Sources */,
 				052E878F21F0C379009FB062 /* CIImageExtension.swift in Sources */,
 				052E879721F0CE7A009FB062 /* EmotionService.swift in Sources */,
 				052E879121F0C9BF009FB062 /* StringExtension.swift in Sources */,
 				05E7D1E722646A8900022AD5 /* Emotion.swift in Sources */,
 				052E879321F0C9F1009FB062 /* UIImageExtension.swift in Sources */,
 				05B9ED1622A4FC5F000168DC /* MarkFaceView.swift in Sources */,
+				05623A7422AD31F100479AF7 /* CNNEmotions.mlmodel in Sources */,
+				05623A7A22AE332300479AF7 /* convmodel.mlmodel in Sources */,
 				0565BFC62293FCF400E79447 /* WalkthroughViewController.swift in Sources */,
 				052E878921F08841009FB062 /* NetworkMethods.swift in Sources */,
 				05B9ED1A22A505FA000168DC /* UIViewExtension.swift in Sources */,
 				0565BFC82293FDBE00E79447 /* WalkthroughContentViewController.swift in Sources */,
 				05D9832321D956FA0034947D /* AppDelegate.swift in Sources */,
 				052E878521F087F4009FB062 /* Network.swift in Sources */,
-				0565BFC12293F91600E79447 /* EmotionsModel.mlmodel in Sources */,
 				052E879921F0DB50009FB062 /* NetworkError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

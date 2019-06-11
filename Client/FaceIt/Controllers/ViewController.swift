@@ -12,6 +12,9 @@ import Vision
 
 class ViewController: UIViewController {
     
+    // MARK: Constatnts
+    var MODEL_IMAGE_SIZE = CGSize(width: 224, height: 224)
+    
     // MARK: Properties
     var scanTimer: Timer?
     var scannedFaceView = [UIView]()
@@ -45,7 +48,7 @@ class ViewController: UIViewController {
         self.title = "Face It"
         
         // Load Emotions Model
-        emotionModel = try? VNCoreMLModel(for: EmotionsModel().model)
+        emotionModel = try? VNCoreMLModel(for: CNNEmotions().model)
         
         // Set scan to NOT Active
         isScanActive = false
@@ -102,7 +105,7 @@ class ViewController: UIViewController {
         let ciImage = CIImage.init(cvPixelBuffer: cvBufferCapturedImage)
         
         // Create requset and handler for faces detection
-        let detectFaceRequest = VNDetectFaceRectanglesRequest { (request: VNRequest, error: Error?) in
+        let detectFaceRequest = VNDetectFaceLandmarksRequest { (request: VNRequest, error: Error?) in
             
             DispatchQueue.main.async {
                 
@@ -121,7 +124,7 @@ class ViewController: UIViewController {
                     // Crop face from images
                     guard let faceCGImage = self?.crop(face, from: cgImage) else { return UIView() }
                 
-                    // Add iamgeView to collection
+                    // Add imageView to collection
                     let imageCropped = UIImage(cgImage: faceCGImage)
                     self?.scannedFaceImage.append(imageCropped)
                     self?.collectionViewFaces.reloadData()
@@ -138,10 +141,16 @@ class ViewController: UIViewController {
                     guard let emotionModel = self?.emotionModel else { return UIView() }
                     let detectEmotionRequest = VNCoreMLRequest(model: emotionModel) { (request: VNRequest, error: Error?) in
                         guard let faceEmotion = request.results?.first as? VNClassificationObservation else { return }
-                        faceView.imgViewFace.image = UIImage(named: "emoji-winking")
+                        faceView.imgViewFace.image = Emotion.image(from: faceEmotion.identifier)
                         print(faceEmotion.identifier)
                     }
-                    try? VNImageRequestHandler(cgImage: faceCGImage, orientation: UIDeviceOrientation.cameraOrientation)
+                    
+                    // Resize face-image before sending it to the model
+                    guard let imageSize = self?.MODEL_IMAGE_SIZE, let newResizedCGImage =
+                        imageCropped.resize(to: imageSize).cgImage else { return UIView() }
+                    
+                    // Run emotion recognition
+                    try? VNImageRequestHandler(cgImage: newResizedCGImage, orientation: UIDeviceOrientation.cameraOrientation)
                         .perform([detectEmotionRequest])
 
                     return faceView

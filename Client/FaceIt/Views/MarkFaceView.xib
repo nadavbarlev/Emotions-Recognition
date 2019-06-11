@@ -26,9 +26,9 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="0B0-qM-yUz" secondAttribute="trailing" constant="10" id="3uZ-to-sas"/>
-                        <constraint firstItem="0B0-qM-yUz" firstAttribute="top" secondItem="hqX-nz-uyL" secondAttribute="top" constant="10" id="TfT-Kj-IF4"/>
                         <constraint firstAttribute="bottom" secondItem="0B0-qM-yUz" secondAttribute="bottom" constant="10" id="h72-36-UXW"/>
                         <constraint firstItem="0B0-qM-yUz" firstAttribute="leading" secondItem="hqX-nz-uyL" secondAttribute="leading" constant="10" id="lvp-KC-qJJ"/>
+                        <constraint firstItem="0B0-qM-yUz" firstAttribute="top" secondItem="hqX-nz-uyL" secondAttribute="top" constant="10" id="tbK-T8-1LW"/>
                     </constraints>
                 </view>
             </subviews>
@@ -45,7 +45,7 @@
                 <outlet property="imgViewFace" destination="0B0-qM-yUz" id="z8q-wD-Nqp"/>
                 <outlet property="view" destination="hqX-nz-uyL" id="cl7-i2-P3F"/>
             </connections>
-            <point key="canvasLocation" x="-324" y="-139"/>
+            <point key="canvasLocation" x="-507.97101449275368" y="-214.28571428571428"/>
         </view>
     </objects>
 </document>

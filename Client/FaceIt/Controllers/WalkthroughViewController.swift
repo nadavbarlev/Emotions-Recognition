@@ -16,7 +16,7 @@ class WalkthroughViewController: UIPageViewController, UIPageViewControllerDataS
                        "Join the community of over 1 billion people and express yourself by sharing all the moments of your day — the highlights and everything in between, too."]
     
     var pagesImages = [UIImage(named: "emoji-winking"),
-                       UIImage(named: "emoji-frowning"),
+                       UIImage(named: "emoji-surprise"),
                        UIImage(named: "emoji-grinning")]
     
     
