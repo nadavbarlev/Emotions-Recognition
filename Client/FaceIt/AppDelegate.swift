@@ -15,7 +15,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+       
+        // Set Initial ViewController
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        var initialViewController: UIViewController
+        
+        if UserDefaults.standard.bool(forKey: "isWalkthroughDisplayed") {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            initialViewController = storyboard.instantiateInitialViewController()!
+        } else {
+            let storyboard = UIStoryboard(name: "Start", bundle: nil)
+            initialViewController = storyboard.instantiateInitialViewController()!
+        }
+        self.window?.rootViewController = initialViewController
+        self.window?.makeKeyAndVisible()
+        
         return true
     }
 

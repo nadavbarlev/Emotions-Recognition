@@ -27,17 +27,17 @@ protocol NetworkService {
                         parameters: [String : Any]?,
                         onSuccess: ((String)->Void)?,
                         onError: ((Error)->Void)?)
-    
+    /*
     static func request<T: Decodable>(method: NetworkMethod,
                                       url: String,
                                       parameters: [String : Any]?,
                                       onSuccess: @escaping ((T)->Void),
                                       onError: ((Error)->Void)?)
+    */
 }
 
 final class Network: NetworkService {
     
- 
     /* Request - Response Data */
     static func request(method: NetworkMethod,
                         url: String,
@@ -77,6 +77,7 @@ final class Network: NetworkService {
     }
     
     /* Request - Response Decodable */
+    /*
     static func request<T: Decodable>(method: NetworkMethod,
                                       url: String,
                                       parameters: [String : Any]?,
@@ -94,7 +95,8 @@ final class Network: NetworkService {
             onError?(error)
         })
     }
-    
+    */
+
     /* Request - Response image */
     static func image(url: String, onSuccess: @escaping ((UIImage)->Void), onError: ((Error)->Void)?) {
         AF.request(url, method: .get)

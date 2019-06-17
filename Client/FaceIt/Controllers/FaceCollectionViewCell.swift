@@ -12,7 +12,11 @@ class FaceCollectionViewCell: UICollectionViewCell {
     
     // MARK: Properties
     var face: UIImage? {
-        didSet { imageViewFace.image = face }
+        didSet {
+            imageViewFace.image = face
+            imageViewFace.layer.cornerRadius = 10
+            imageViewFace.clipsToBounds = true
+        }
     }
     
     // MARK: Outlets

@@ -10,47 +10,60 @@ import UIKit
 import ARKit
 import Vision
 
-enum Emotions: Int {
-    case happy = 1, sad
-    
-    var toString: String {
-        switch self {
-        case .happy: return "Happy"
-        case .sad:   return "Sad"
-        }
-    }
-}
-
 class ViewController: UIViewController {
+    
+    // MARK: Constatnts
+    var MODEL_IMAGE_SIZE = CGSize(width: 224, height: 224)
     
     // MARK: Properties
     var scanTimer: Timer?
     var scannedFaceView = [UIView]()
     var scannedFaceImage = [UIImage]()
     let configuration = ARWorldTrackingConfiguration()
+    var emotionModel: VNCoreMLModel?
+    var isScanActive: Bool = false
     
     // MARK: Outlets
     @IBOutlet weak var sceneView: ARSCNView!
     @IBOutlet weak var collectionViewFaces: UICollectionView!
+    @IBOutlet weak var consCollectionViewFacesHeight: NSLayoutConstraint!
+    @IBOutlet weak var barItemToggleScan: UIBarButtonItem!
     
-    // MARK: LifeCycle Methods
+    // MARK: Actions
+    @objc func toggleScan() {
+        if isScanActive {
+            setupStopScan()
+            self.showBottomToast(onView: self.view, withMessage: "Stop Scanning")
+        } else {
+            setupPlayScan()
+            self.showBottomToast(onView: self.view, withMessage: "Start Scanning")
+        }
+        
+        isScanActive = !isScanActive
+    }
+    
+    // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Face It"
         
+        // Load Emotions Model
+        emotionModel = try? VNCoreMLModel(for: CNNEmotions().model)
+        
+        // Set scan to NOT Active
+        isScanActive = false
+        navigationItem.rightBarButtonItem =
+            UIBarButtonItem(barButtonSystemItem: .play, target: self, action: #selector(toggleScan))
+        navigationItem.rightBarButtonItem?.tintColor = .black
+        
+        // Collection data source and delegate
         collectionViewFaces.dataSource = self
         collectionViewFaces.delegate   = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        // Start scan for faces
         sceneView.session.run(configuration)
-        scanTimer = Timer.scheduledTimer(timeInterval: 2,
-                                         target: self,
-                                         selector: #selector(scanForFaces),
-                                         userInfo: nil,
-                                         repeats: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -62,14 +75,28 @@ class ViewController: UIViewController {
     }
 
     // MARK: Methods
+    private func setupPlayScan() {
+        navigationItem.rightBarButtonItem =
+            UIBarButtonItem(barButtonSystemItem: .pause, target: self, action: #selector(toggleScan))
+        navigationItem.rightBarButtonItem?.tintColor = .black
+        scanTimer = Timer.scheduledTimer(timeInterval: 3,
+                                         target: self,
+                                         selector: #selector(scanForFaces),
+                                         userInfo: nil,
+                                         repeats: true)
+    }
+    
+    private func setupStopScan() {
+        clearData()
+        navigationItem.rightBarButtonItem =
+            UIBarButtonItem(barButtonSystemItem: .play, target: self, action: #selector(toggleScan))
+        navigationItem.rightBarButtonItem?.tintColor = .black
+        scanTimer?.invalidate()
+    }
+    
     @objc private func scanForFaces() {
         
-        // Clear previous faces from memory and from UI
-        _ = scannedFaceView.map { $0.removeFromSuperview() }
-        scannedFaceView.removeAll()
-        
-        scannedFaceImage.removeAll()
-        collectionViewFaces.reloadData()
+        clearData()
         
         // Get current image captured
         guard let cvBufferCapturedImage = sceneView.session.currentFrame?.capturedImage else { return }
@@ -78,7 +105,7 @@ class ViewController: UIViewController {
         let ciImage = CIImage.init(cvPixelBuffer: cvBufferCapturedImage)
         
         // Create requset and handler for faces detection
-        let detectFaceRequest = VNDetectFaceRectanglesRequest { (request: VNRequest, error: Error?) in
+        let detectFaceRequest = VNDetectFaceLandmarksRequest { (request: VNRequest, error: Error?) in
             
             DispatchQueue.main.async {
                 
@@ -97,34 +124,58 @@ class ViewController: UIViewController {
                     // Crop face from images
                     guard let faceCGImage = self?.crop(face, from: cgImage) else { return UIView() }
                 
-                    // Add iamgeView to collection
+                    // Add imageView to collection
                     let imageCropped = UIImage(cgImage: faceCGImage)
                     self?.scannedFaceImage.append(imageCropped)
                     self?.collectionViewFaces.reloadData()
                     
-                    // Get recognition
-                    EmotionService.shared.emotion(of: imageCropped) { (emojiID: String?) in
+                    // Get emotion from SERVER
+                    /* EmotionService.shared.emotion(of: imageCropped) { (emojiID: String?) in
                         guard let emojiAsString = emojiID else { print("Server Error"); return }
-                        guard let emojiAsInt = Int(emojiAsString), let emoji = Emotions(rawValue: emojiAsInt)
+                        guard let emojiAsInt = Int(emojiAsString), let emoji = Emotion(rawValue: emojiAsInt)
                             else { print("Invalid returned value"); return }
-                        print(emoji.toString)
+                        print(emoji.toEmojie)
+                    } */
+                        
+                    // Get emotion from LOCAL model
+                    guard let emotionModel = self?.emotionModel else { return UIView() }
+                    let detectEmotionRequest = VNCoreMLRequest(model: emotionModel) { (request: VNRequest, error: Error?) in
+                        guard let faceEmotion = request.results?.first as? VNClassificationObservation else { return }
+                        faceView.imgViewFace.image = Emotion.image(from: faceEmotion.identifier)
+                        print(faceEmotion.identifier)
                     }
                     
+                    // Resize face-image before sending it to the model
+                    guard let imageSize = self?.MODEL_IMAGE_SIZE, let newResizedCGImage =
+                        imageCropped.resize(to: imageSize).cgImage else { return UIView() }
+                    
+                    // Run emotion recognition
+                    try? VNImageRequestHandler(cgImage: newResizedCGImage, orientation: UIDeviceOrientation.cameraOrientation)
+                        .perform([detectEmotionRequest])
+
                     return faceView
                 }
             }
         }
         
         // Run face detection
-        try? VNImageRequestHandler(ciImage: ciImage, orientation: UIDeviceOrientation.cameraOrientation).perform([detectFaceRequest])
+        try? VNImageRequestHandler(ciImage: ciImage, orientation: UIDeviceOrientation.cameraOrientation)
+            .perform([detectFaceRequest])
     }
     
-    private func mark(_ face: VNFaceObservation) -> UIView {
+    /* Clear previous faces from memory and from UI */
+    private func clearData() {
+        scannedFaceView.forEach { $0.removeFromSuperview() }
+        scannedFaceView.removeAll()
+        scannedFaceImage.removeAll()
+        collectionViewFaces.reloadData()
+    }
+    
+    private func mark(_ face: VNFaceObservation) -> MarkFaceView {
         let faceRect = face.normalize(imageHeight: self.sceneView.bounds.height,
                                       imageWidth: self.sceneView.bounds.width)
-        let faceView = UIView(frame: faceRect)
-        faceView.layer.borderColor = UIColor.black.cgColor
-        faceView.layer.borderWidth = 3
+        let faceView: MarkFaceView = .fromNib()
+        faceView.frame = faceRect
         return faceView
     }
     
