@@ -1,4 +1,5 @@
 from keras import models
+from keras import backend
 from preprocessor import Preprocessor
 
 
@@ -15,4 +16,5 @@ class EmotionDetector(object):
         prediction = self.cnn_model.predict(processed_image)
         probabilities = prediction[0]
         predicted_emotion = list(probabilities).index(max(probabilities))
+        backend.clear_session()
         return predicted_emotion
