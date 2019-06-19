@@ -10,4 +10,4 @@ app = Flask(__name__)
 def detect_emotion():
     base64_image = request.form['base64_image']
     image_array = np.fromstring(base64.b64decode(base64_image), np.uint8)
-    return EmotionDetector().detect_emotion(image_array)
+    return str(EmotionDetector().detect_emotion(image_array))
