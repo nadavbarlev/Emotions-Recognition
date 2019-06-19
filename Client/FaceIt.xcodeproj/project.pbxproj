@@ -17,13 +17,13 @@
 		052E879321F0C9F1009FB062 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052E879221F0C9F1009FB062 /* UIImageExtension.swift */; };
 		052E879721F0CE7A009FB062 /* EmotionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052E879621F0CE7A009FB062 /* EmotionService.swift */; };
 		052E879921F0DB50009FB062 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052E879821F0DB50009FB062 /* NetworkError.swift */; };
-		05623A7222AD202A00479AF7 /* EmotionsConvModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 05623A7122AD202A00479AF7 /* EmotionsConvModel.mlmodel */; };
-		05623A7422AD31F100479AF7 /* CNNEmotions.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 05623A7322AD31F100479AF7 /* CNNEmotions.mlmodel */; };
-		05623A7622AE2CD000479AF7 /* EmotionsModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 05623A7522AE2CD000479AF7 /* EmotionsModel.mlmodel */; };
-		05623A7A22AE332300479AF7 /* convmodel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 05623A7922AE332300479AF7 /* convmodel.mlmodel */; };
 		0565BFC42293FBC100E79447 /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0565BFC32293FBC100E79447 /* Start.storyboard */; };
 		0565BFC62293FCF400E79447 /* WalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0565BFC52293FCF400E79447 /* WalkthroughViewController.swift */; };
 		0565BFC82293FDBE00E79447 /* WalkthroughContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0565BFC72293FDBE00E79447 /* WalkthroughContentViewController.swift */; };
+		0573F26322B83B6A007EE2F9 /* my_new_model.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 0573F26222B83B6A007EE2F9 /* my_new_model.mlmodel */; };
+		0573F26522B83D75007EE2F9 /* newCNNEmotions.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 0573F26422B83D75007EE2F9 /* newCNNEmotions.mlmodel */; };
+		0573F26722B845C9007EE2F9 /* CNNEmotions.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 0573F26622B845C9007EE2F9 /* CNNEmotions.mlmodel */; };
+		0573F26922B8E205007EE2F9 /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0573F26822B8E205007EE2F9 /* ConfigViewController.swift */; };
 		05B9DB3A229C1D57000168DC /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9DB39229C1D57000168DC /* UIViewControllerExtension.swift */; };
 		05B9ED1622A4FC5F000168DC /* MarkFaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9ED1522A4FC5F000168DC /* MarkFaceView.swift */; };
 		05B9ED1822A4FD7E000168DC /* MarkFaceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05B9ED1722A4FD7E000168DC /* MarkFaceView.xib */; };
@@ -48,13 +48,14 @@
 		052E879221F0C9F1009FB062 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		052E879621F0CE7A009FB062 /* EmotionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionService.swift; sourceTree = "<group>"; };
 		052E879821F0DB50009FB062 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
-		05623A7122AD202A00479AF7 /* EmotionsConvModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = EmotionsConvModel.mlmodel; sourceTree = "<group>"; };
-		05623A7322AD31F100479AF7 /* CNNEmotions.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = CNNEmotions.mlmodel; sourceTree = "<group>"; };
-		05623A7522AE2CD000479AF7 /* EmotionsModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = EmotionsModel.mlmodel; sourceTree = "<group>"; };
-		05623A7922AE332300479AF7 /* convmodel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = convmodel.mlmodel; sourceTree = "<group>"; };
 		0565BFC32293FBC100E79447 /* Start.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
 		0565BFC52293FCF400E79447 /* WalkthroughViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughViewController.swift; sourceTree = "<group>"; };
 		0565BFC72293FDBE00E79447 /* WalkthroughContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughContentViewController.swift; sourceTree = "<group>"; };
+		0573F24B22B7C133007EE2F9 /* FaceIt-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FaceIt-Bridging-Header.h"; sourceTree = "<group>"; };
+		0573F26222B83B6A007EE2F9 /* my_new_model.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = my_new_model.mlmodel; sourceTree = "<group>"; };
+		0573F26422B83D75007EE2F9 /* newCNNEmotions.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = newCNNEmotions.mlmodel; sourceTree = "<group>"; };
+		0573F26622B845C9007EE2F9 /* CNNEmotions.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = CNNEmotions.mlmodel; sourceTree = "<group>"; };
+		0573F26822B8E205007EE2F9 /* ConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigViewController.swift; sourceTree = "<group>"; };
 		05B9DB39229C1D57000168DC /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		05B9ED1522A4FC5F000168DC /* MarkFaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkFaceView.swift; sourceTree = "<group>"; };
 		05B9ED1722A4FD7E000168DC /* MarkFaceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarkFaceView.xib; sourceTree = "<group>"; };
@@ -88,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				05D9832421D956FA0034947D /* ViewController.swift */,
+				0573F26822B8E205007EE2F9 /* ConfigViewController.swift */,
 				05130EE92211B8FC006BA697 /* FaceCollectionViewCell.swift */,
 				0565BFC52293FCF400E79447 /* WalkthroughViewController.swift */,
 				0565BFC72293FDBE00E79447 /* WalkthroughContentViewController.swift */,
@@ -110,6 +112,7 @@
 		052E878221F087B7009FB062 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				0573F24A22B7C121007EE2F9 /* Utils */,
 				05E7D1E822646DA600022AD5 /* Models */,
 				052E878B21F0C19E009FB062 /* Extensions */,
 				052E878A21F0889C009FB062 /* Network */,
@@ -158,6 +161,14 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		0573F24A22B7C121007EE2F9 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				0573F24B22B7C133007EE2F9 /* FaceIt-Bridging-Header.h */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		05D9831621D956FA0034947D = {
 			isa = PBXGroup;
 			children = (
@@ -201,10 +212,9 @@
 		05E7D1E822646DA600022AD5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				05623A7322AD31F100479AF7 /* CNNEmotions.mlmodel */,
-				05623A7522AE2CD000479AF7 /* EmotionsModel.mlmodel */,
-				05623A7122AD202A00479AF7 /* EmotionsConvModel.mlmodel */,
-				05623A7922AE332300479AF7 /* convmodel.mlmodel */,
+				0573F26222B83B6A007EE2F9 /* my_new_model.mlmodel */,
+				0573F26622B845C9007EE2F9 /* CNNEmotions.mlmodel */,
+				0573F26422B83D75007EE2F9 /* newCNNEmotions.mlmodel */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -260,6 +270,7 @@
 				TargetAttributes = {
 					05D9831E21D956FA0034947D = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -348,22 +359,22 @@
 				052E878D21F0C1CC009FB062 /* UIDeviceOrientationExtension.swift in Sources */,
 				05130EE72211B126006BA697 /* VNFaceObservationExtension.swift in Sources */,
 				05B9DB3A229C1D57000168DC /* UIViewControllerExtension.swift in Sources */,
-				05623A7622AE2CD000479AF7 /* EmotionsModel.mlmodel in Sources */,
-				05623A7222AD202A00479AF7 /* EmotionsConvModel.mlmodel in Sources */,
 				052E878F21F0C379009FB062 /* CIImageExtension.swift in Sources */,
 				052E879721F0CE7A009FB062 /* EmotionService.swift in Sources */,
 				052E879121F0C9BF009FB062 /* StringExtension.swift in Sources */,
 				05E7D1E722646A8900022AD5 /* Emotion.swift in Sources */,
 				052E879321F0C9F1009FB062 /* UIImageExtension.swift in Sources */,
 				05B9ED1622A4FC5F000168DC /* MarkFaceView.swift in Sources */,
-				05623A7422AD31F100479AF7 /* CNNEmotions.mlmodel in Sources */,
-				05623A7A22AE332300479AF7 /* convmodel.mlmodel in Sources */,
+				0573F26522B83D75007EE2F9 /* newCNNEmotions.mlmodel in Sources */,
+				0573F26722B845C9007EE2F9 /* CNNEmotions.mlmodel in Sources */,
 				0565BFC62293FCF400E79447 /* WalkthroughViewController.swift in Sources */,
+				0573F26922B8E205007EE2F9 /* ConfigViewController.swift in Sources */,
 				052E878921F08841009FB062 /* NetworkMethods.swift in Sources */,
 				05B9ED1A22A505FA000168DC /* UIViewExtension.swift in Sources */,
 				0565BFC82293FDBE00E79447 /* WalkthroughContentViewController.swift in Sources */,
 				05D9832321D956FA0034947D /* AppDelegate.swift in Sources */,
 				052E878521F087F4009FB062 /* Network.swift in Sources */,
+				0573F26322B83B6A007EE2F9 /* my_new_model.mlmodel in Sources */,
 				052E879921F0DB50009FB062 /* NetworkError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -511,6 +522,7 @@
 			baseConfigurationReference = 8914A5C4D26BB7C41B547BBD /* Pods-FaceIt.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B8V7K6U9ZU;
 				INFOPLIST_FILE = FaceIt/Info.plist;
@@ -520,6 +532,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nadavbarlev.FaceIt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FaceIt/Others/Utils/FaceIt-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -530,6 +544,7 @@
 			baseConfigurationReference = F4CB57F2A94FDF28EE25601A /* Pods-FaceIt.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B8V7K6U9ZU;
 				INFOPLIST_FILE = FaceIt/Info.plist;
@@ -539,6 +554,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nadavbarlev.FaceIt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FaceIt/Others/Utils/FaceIt-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

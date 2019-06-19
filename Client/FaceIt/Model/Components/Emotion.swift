@@ -20,6 +20,10 @@ enum Emotion: Int {
     case surprise_face
     
     /* Computed Properties */
+    static var neutral: UIImage {
+        return UIImage(named: "emoji-neutral")!
+    }
+    
     var toImage: UIImage {
         switch self {
         case .angry_face: return UIImage(named: "emoji-angry")!
@@ -32,28 +36,46 @@ enum Emotion: Int {
         }
     }
     
-    static var neutral: UIImage {
-        return UIImage(named: "emoji-neutral")!
-    }
-    
     /* Methods */
     static func image(from description: String) -> UIImage {
         switch description {
-        case "Anger", "Angry":
+        case "Angry", "Anger", "angry", "anger":
             return UIImage(named: "emoji-angry")!
         /*
         case "Contempt":
             return UIImage(named: "emoji-contempt")!
         */
-        case "Disgust":
+        case "Disgust", "disgust":
             return UIImage(named: "emojie-disgust")!
-        case "Fear":
+        case "Fear", "Scared", "fear", "scared":
             return UIImage(named: "emoji-fear")!
-        case "Happiness", "Happy":
+        case "Happy", "Happiness", "happy", "happiness":
             return UIImage(named: "emoji-grinning")!
-        case "Sadness", "Sad":
+        case "Sad", "Sadness", "sad", "sadness":
             return UIImage(named: "emoji-sandness")!
-        case "Surprise":
+        case "Surprise", "surprise", "surprised":
+            return UIImage(named: "emoji-surprise")!
+        default: return neutral
+        }
+    }
+    
+    static func image(from number: Int) -> UIImage {
+        switch number {
+        case 0:
+            return UIImage(named: "emoji-angry")!
+        /*
+         case 1:
+            return UIImage(named: "emoji-contempt")!
+        */
+        case 1:
+            return UIImage(named: "emojie-disgust")!
+        case 2:
+            return UIImage(named: "emoji-fear")!
+        case 3:
+            return UIImage(named: "emoji-grinning")!
+        case 4:
+            return UIImage(named: "emoji-sandness")!
+        case 5:
             return UIImage(named: "emoji-surprise")!
         default: return neutral
         }

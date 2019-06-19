@@ -13,7 +13,9 @@ import Vision
 class ViewController: UIViewController {
     
     // MARK: Constatnts
-    var MODEL_IMAGE_SIZE = CGSize(width: 224, height: 224)
+    let TIME_SCANNING: TimeInterval = 3
+    let SERVER_MODEL_IMAGE_SIZE = CGSize(width: 64, height: 64)
+    let LOCAL_MODEL_IMAGE_SIZE = CGSize(width: 224, height: 224)
     
     // MARK: Properties
     var scanTimer: Timer?
@@ -22,12 +24,14 @@ class ViewController: UIViewController {
     let configuration = ARWorldTrackingConfiguration()
     var emotionModel: VNCoreMLModel?
     var isScanActive: Bool = false
+    var shouldRunModelFromServer = true
     
     // MARK: Outlets
     @IBOutlet weak var sceneView: ARSCNView!
     @IBOutlet weak var collectionViewFaces: UICollectionView!
     @IBOutlet weak var consCollectionViewFacesHeight: NSLayoutConstraint!
     @IBOutlet weak var barItemToggleScan: UIBarButtonItem!
+    @IBOutlet weak var barItemConfig: UIBarButtonItem!
     
     // MARK: Actions
     @objc func toggleScan() {
@@ -42,19 +46,30 @@ class ViewController: UIViewController {
         isScanActive = !isScanActive
     }
     
+    @objc func moveToConfigVC() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let configVC = storyboard.instantiateViewController(withIdentifier: "ConfigVC") as! ConfigViewController
+        self.show(configVC, sender: self)
+    }
+    
     // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Face It"
         
         // Load Emotions Model
-        emotionModel = try? VNCoreMLModel(for: CNNEmotions().model)
+        emotionModel = try? VNCoreMLModel(for: newCNNEmotions().model)
         
-        // Set scan to NOT Active
+        // Scan Confige
         isScanActive = false
         navigationItem.rightBarButtonItem =
             UIBarButtonItem(barButtonSystemItem: .play, target: self, action: #selector(toggleScan))
         navigationItem.rightBarButtonItem?.tintColor = .black
+        
+        // Setting Config
+        navigationItem.leftBarButtonItem =
+            UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(moveToConfigVC))
+        navigationItem.leftBarButtonItem?.tintColor = .black
         
         // Collection data source and delegate
         collectionViewFaces.dataSource = self
@@ -79,7 +94,7 @@ class ViewController: UIViewController {
         navigationItem.rightBarButtonItem =
             UIBarButtonItem(barButtonSystemItem: .pause, target: self, action: #selector(toggleScan))
         navigationItem.rightBarButtonItem?.tintColor = .black
-        scanTimer = Timer.scheduledTimer(timeInterval: 3,
+        scanTimer = Timer.scheduledTimer(timeInterval: TIME_SCANNING,
                                          target: self,
                                          selector: #selector(scanForFaces),
                                          userInfo: nil,
@@ -105,7 +120,7 @@ class ViewController: UIViewController {
         let ciImage = CIImage.init(cvPixelBuffer: cvBufferCapturedImage)
         
         // Create requset and handler for faces detection
-        let detectFaceRequest = VNDetectFaceLandmarksRequest { (request: VNRequest, error: Error?) in
+        let detectFaceRequest = VNDetectFaceRectanglesRequest { (request: VNRequest, error: Error?) in
             
             DispatchQueue.main.async {
                 
@@ -116,6 +131,8 @@ class ViewController: UIViewController {
                 guard let cgImage = ciImage.rotate.toCGImage() else { return }
                 
                 self.scannedFaceView = faces.map { [weak self] (face: VNFaceObservation) in
+                    
+                    guard let strongSelf = self else { return UIView() }
                     
                     // Mark face with border
                     guard let faceView = self?.mark(face) else { return UIView() }
@@ -129,29 +146,36 @@ class ViewController: UIViewController {
                     self?.scannedFaceImage.append(imageCropped)
                     self?.collectionViewFaces.reloadData()
                     
-                    // Get emotion from SERVER
-                    /* EmotionService.shared.emotion(of: imageCropped) { (emojiID: String?) in
-                        guard let emojiAsString = emojiID else { print("Server Error"); return }
-                        guard let emojiAsInt = Int(emojiAsString), let emoji = Emotion(rawValue: emojiAsInt)
-                            else { print("Invalid returned value"); return }
-                        print(emoji.toEmojie)
-                    } */
+                    /* SECTION: Get emotion from SERVER */
+                    if (strongSelf.shouldRunModelFromServer) {
+                        guard let serverImageSize = self?.SERVER_MODEL_IMAGE_SIZE else { return UIView() }
+                        let newServerImageResized = imageCropped.resize(to: serverImageSize)
                         
-                    // Get emotion from LOCAL model
-                    guard let emotionModel = self?.emotionModel else { return UIView() }
-                    let detectEmotionRequest = VNCoreMLRequest(model: emotionModel) { (request: VNRequest, error: Error?) in
-                        guard let faceEmotion = request.results?.first as? VNClassificationObservation else { return }
-                        faceView.imgViewFace.image = Emotion.image(from: faceEmotion.identifier)
-                        print(faceEmotion.identifier)
+                        EmotionService.shared.emotion(of: newServerImageResized) { (emojiID: String?, errorMsg: String?) in
+                            guard let emojiAsString = emojiID, let emojiAsInt = Int(emojiAsString) else {
+                                self?.showTopToast(onView: strongSelf.view, withMessage: errorMsg!)
+                                return
+                            }
+                            faceView.imgViewFace.image = Emotion.image(from: emojiAsInt)
+                        }
                     }
                     
-                    // Resize face-image before sending it to the model
-                    guard let imageSize = self?.MODEL_IMAGE_SIZE, let newResizedCGImage =
-                        imageCropped.resize(to: imageSize).cgImage else { return UIView() }
-                    
-                    // Run emotion recognition
-                    try? VNImageRequestHandler(cgImage: newResizedCGImage, orientation: UIDeviceOrientation.cameraOrientation)
-                        .perform([detectEmotionRequest])
+                    /* SECTION: Get emotion from LOCAL model */
+                    else {
+                        guard let emotionModel = self?.emotionModel else { return UIView() }
+                        let detectEmotionRequest = VNCoreMLRequest(model: emotionModel) { (request: VNRequest, error: Error?) in
+                            guard let faceEmotion = request.results?.first as? VNClassificationObservation else { return }
+                            faceView.imgViewFace.image = Emotion.image(from: faceEmotion.identifier)
+                        }
+                        
+                        // Resize face-image before sending it to the model
+                        guard let imageSize = self?.LOCAL_MODEL_IMAGE_SIZE, let newResizedCGImage =
+                            imageCropped.resize(to: imageSize).cgImage else { return UIView() }
+                        
+                        // Run emotion recognition
+                        try? VNImageRequestHandler(cgImage: newResizedCGImage, orientation: UIDeviceOrientation.cameraOrientation)
+                            .perform([detectEmotionRequest])
+                    }
 
                     return faceView
                 }

@@ -8,5 +8,6 @@ target 'FaceIt' do
   use_frameworks!
   pod 'Alamofire', '~> 5.0.0.beta.1'
   pod 'Toast-Swift', '~> 4.0.0'
+  pod 'DLRadioButton', '~> 1.4'
 
 end

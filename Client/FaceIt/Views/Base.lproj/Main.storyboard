@@ -72,11 +72,16 @@
                         <viewLayoutGuide key="safeArea" id="FS6-Ia-B2x"/>
                     </view>
                     <navigationItem key="navigationItem" id="rIp-km-2q2">
+                        <barButtonItem key="backBarButtonItem" title=" " id="gvb-L3-1zk"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="compose" id="CSw-Dm-Heh">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="play" id="zXv-Sz-Uvg">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="barItemConfig" destination="CSw-Dm-Heh" id="aoe-vV-hqc"/>
                         <outlet property="barItemToggleScan" destination="zXv-Sz-Uvg" id="WDf-g3-M8N"/>
                         <outlet property="collectionViewFaces" destination="rUC-F9-tgX" id="DrS-n4-z6D"/>
                         <outlet property="consCollectionViewFacesHeight" destination="Y5W-vM-pnq" id="7pP-64-sGl"/>
@@ -86,6 +91,174 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="13.6" y="-134.48275862068968"/>
+        </scene>
+        <!--Config View Controller-->
+        <scene sceneID="cE2-Q8-aNa">
+            <objects>
+                <viewController storyboardIdentifier="ConfigVC" id="Wcc-Mb-zsw" customClass="ConfigViewController" customModule="FaceIt" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vh9-cY-ZhP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emotion model" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5g-2T-7a0">
+                                <rect key="frame" x="16" y="125.5" width="343" height="23"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rqk-qb-0bl" customClass="DLRadioButton">
+                                <rect key="frame" x="16" y="166.5" width="120" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="qMp-vZ-KZf"/>
+                                </constraints>
+                                <state key="normal" title="Server">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="marginWidth">
+                                        <real key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outletCollection property="otherButtons" destination="Gyx-3c-X2E" id="Rwg-qW-sBO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gyx-3c-X2E" customClass="DLRadioButton">
+                                <rect key="frame" x="239" y="166.5" width="120" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="AaE-EK-2hS"/>
+                                </constraints>
+                                <state key="normal" title="Local">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="marginWidth">
+                                        <real key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scaning frequency" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Syv-b6-4sk">
+                                <rect key="frame" x="16" y="241" width="343" height="23"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="P5Q-4o-C7e">
+                                <rect key="frame" x="16" y="282" width="343" height="34"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XMj-xN-g0q" customClass="DLRadioButton">
+                                        <rect key="frame" x="0.0" y="0.0" width="86" height="34"/>
+                                        <state key="normal" title="1s">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="marginWidth">
+                                                <real key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outletCollection property="otherButtons" destination="O0h-tk-3hI" id="Vrp-gT-7vP"/>
+                                            <outletCollection property="otherButtons" destination="56b-K0-8HJ" id="TC9-oe-fKo"/>
+                                            <outletCollection property="otherButtons" destination="CPD-dL-T9o" id="KqM-QP-XCt"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O0h-tk-3hI" customClass="DLRadioButton">
+                                        <rect key="frame" x="86" y="0.0" width="85.5" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="CBI-pK-Cza"/>
+                                        </constraints>
+                                        <state key="normal" title="2s">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="marginWidth">
+                                                <real key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="56b-K0-8HJ" customClass="DLRadioButton">
+                                        <rect key="frame" x="171.5" y="0.0" width="86" height="34"/>
+                                        <state key="normal" title="3s">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="marginWidth">
+                                                <real key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outletCollection property="otherButtons" destination="CPD-dL-T9o" id="dai-wx-9Im"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CPD-dL-T9o" customClass="DLRadioButton">
+                                        <rect key="frame" x="257.5" y="0.0" width="85.5" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="BVz-60-Ztx"/>
+                                        </constraints>
+                                        <state key="normal" title="10s">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="marginWidth">
+                                                <real key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jPP-Kw-tne">
+                                <rect key="frame" x="24" y="216.5" width="326" height="0.5"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="0.5" id="7yB-te-eRi"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oWI-du-JJq">
+                                <rect key="frame" x="24" y="332" width="327" height="0.5"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="0.5" id="R4m-nd-6RL"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qqh-Lq-oi9">
+                                <rect key="frame" x="16" y="44" width="343" height="57.5"/>
+                                <string key="text">Statistical methods commonly involve the use of different supervised machine learning algorithms in which a large set of annotated data is fed into the algorithms for the system to learn and predict the appropriate emotion types</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="rqk-qb-0bl" firstAttribute="top" secondItem="d5g-2T-7a0" secondAttribute="bottom" constant="18" id="0Sw-mC-2xU"/>
+                            <constraint firstItem="rqk-qb-0bl" firstAttribute="leading" secondItem="d5g-2T-7a0" secondAttribute="leading" id="3Kw-vA-Hu0"/>
+                            <constraint firstItem="oWI-du-JJq" firstAttribute="leading" secondItem="QkO-Qo-ukg" secondAttribute="leading" constant="24" id="E7H-4o-0cc"/>
+                            <constraint firstItem="qqh-Lq-oi9" firstAttribute="top" secondItem="QkO-Qo-ukg" secondAttribute="top" constant="24" id="Jep-bU-HE0"/>
+                            <constraint firstItem="jPP-Kw-tne" firstAttribute="leading" secondItem="QkO-Qo-ukg" secondAttribute="leading" constant="24" id="KMt-h3-7jm"/>
+                            <constraint firstItem="Syv-b6-4sk" firstAttribute="top" secondItem="jPP-Kw-tne" secondAttribute="bottom" constant="24" id="Kxf-ag-rlx"/>
+                            <constraint firstItem="Gyx-3c-X2E" firstAttribute="trailing" secondItem="d5g-2T-7a0" secondAttribute="trailing" id="PSE-oE-57w"/>
+                            <constraint firstItem="P5Q-4o-C7e" firstAttribute="top" secondItem="Syv-b6-4sk" secondAttribute="bottom" constant="18" id="QKg-dQ-ESg"/>
+                            <constraint firstItem="QkO-Qo-ukg" firstAttribute="trailing" secondItem="P5Q-4o-C7e" secondAttribute="trailing" constant="16" id="RRZ-of-wgb"/>
+                            <constraint firstItem="QkO-Qo-ukg" firstAttribute="trailing" secondItem="Syv-b6-4sk" secondAttribute="trailing" constant="16" id="Tsf-q5-1uT"/>
+                            <constraint firstItem="QkO-Qo-ukg" firstAttribute="trailing" secondItem="qqh-Lq-oi9" secondAttribute="trailing" constant="16" id="Tsn-ml-q7d"/>
+                            <constraint firstItem="jPP-Kw-tne" firstAttribute="top" secondItem="rqk-qb-0bl" secondAttribute="bottom" constant="16" id="YoZ-g2-ISm"/>
+                            <constraint firstItem="Gyx-3c-X2E" firstAttribute="centerY" secondItem="rqk-qb-0bl" secondAttribute="centerY" id="dPX-lu-h9r"/>
+                            <constraint firstItem="d5g-2T-7a0" firstAttribute="leading" secondItem="QkO-Qo-ukg" secondAttribute="leading" constant="16" id="ebo-8x-b26"/>
+                            <constraint firstItem="P5Q-4o-C7e" firstAttribute="leading" secondItem="QkO-Qo-ukg" secondAttribute="leading" constant="16" id="gJl-rg-ERh"/>
+                            <constraint firstItem="d5g-2T-7a0" firstAttribute="top" secondItem="qqh-Lq-oi9" secondAttribute="bottom" constant="24" id="gs5-pg-LYP"/>
+                            <constraint firstItem="Syv-b6-4sk" firstAttribute="leading" secondItem="QkO-Qo-ukg" secondAttribute="leading" constant="16" id="kca-fS-Y5h"/>
+                            <constraint firstItem="qqh-Lq-oi9" firstAttribute="leading" secondItem="QkO-Qo-ukg" secondAttribute="leading" constant="16" id="nDh-b2-f8S"/>
+                            <constraint firstItem="QkO-Qo-ukg" firstAttribute="trailing" secondItem="jPP-Kw-tne" secondAttribute="trailing" constant="25" id="qHR-2z-NrY"/>
+                            <constraint firstItem="oWI-du-JJq" firstAttribute="top" secondItem="XMj-xN-g0q" secondAttribute="bottom" constant="16" id="tSJ-XJ-UuP"/>
+                            <constraint firstItem="QkO-Qo-ukg" firstAttribute="trailing" secondItem="oWI-du-JJq" secondAttribute="trailing" constant="24" id="tsM-Ja-74G"/>
+                            <constraint firstItem="QkO-Qo-ukg" firstAttribute="trailing" secondItem="d5g-2T-7a0" secondAttribute="trailing" constant="16" id="y0e-qx-SE3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="QkO-Qo-ukg"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BVd-nU-3QZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="800.79999999999995" y="-134.48275862068968"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jb8-fk-iAy">
@@ -106,4 +279,5 @@
             <point key="canvasLocation" x="-756" y="-134.48275862068968"/>
         </scene>
     </scenes>
+    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

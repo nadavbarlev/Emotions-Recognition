@@ -40,4 +40,32 @@ extension UIImage {
         
         return newImage!
     }
+    
+    var withGrayscale: UIImage {
+        guard let ciImage = CIImage(image: self, options: nil) else { return self }
+        let paramsColor: [String: AnyObject] = [kCIInputBrightnessKey: NSNumber(value: 0.0), kCIInputContrastKey: NSNumber(value: 1.0), kCIInputSaturationKey: NSNumber(value: 0.0)]
+        let grayscale = ciImage.applyingFilter("CIColorControls", parameters: paramsColor)
+        guard let processedCGImage = CIContext().createCGImage(grayscale, from: grayscale.extent) else { return self }
+        return UIImage(cgImage: processedCGImage, scale: scale, orientation: imageOrientation)
+    }
+    
+    var noir: UIImage {
+        let context = CIContext(options: nil)
+        let currentFilter = CIFilter(name: "CIPhotoEffectNoir")!
+        currentFilter.setValue(CIImage(image: self), forKey: kCIInputImageKey)
+        let output = currentFilter.outputImage!
+        let cgImage = context.createCGImage(output, from: output.extent)!
+        let processedImage = UIImage(cgImage: cgImage, scale: scale, orientation: imageOrientation)
+        
+        return processedImage
+    }
+    
+    var noirCG: CGImage {
+        let context = CIContext(options: nil)
+        let currentFilter = CIFilter(name: "CIPhotoEffectNoir")!
+        currentFilter.setValue(CIImage(image: self), forKey: kCIInputImageKey)
+        let output = currentFilter.outputImage!
+        let cgImage = context.createCGImage(output, from: output.extent)!
+        return cgImage
+    }
 }

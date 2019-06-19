@@ -11,7 +11,7 @@ import UIKit
 class EmotionService {
     
     // MARK: Constants
-    let URL: String = "http://35.204.73.177:5000/v1/detect"
+    let URL: String = "http://34.90.252.65:5000/v1/detect"
     
     // MARK: Properties
     static let shared = EmotionService()
@@ -20,21 +20,20 @@ class EmotionService {
     private init() {}
     
     // MARK: Methods
-    func emotion(of image: UIImage, completion: @escaping (String?)->Void) {
+    func emotion(of image: UIImage, completion: @escaping (String?, String?)->Void) {
         
         // Convert image to base64 String
         guard let imageAsString = image.toBase64() else {
-            completion(nil)
+            completion(nil, "Convert to base64 failed")
             return
         }
         
         Network.request(method: .post,url: URL ,parameters: ["base64_image": imageAsString],
         onSuccess: { (emojiID: String) in
-            completion(emojiID)
+            completion(emojiID, nil)
         },
         onError: { (error: Error) in
-            completion(nil)
-            print(error.localizedDescription)
+            completion(nil, error.localizedDescription)
         })
     }
 }

@@ -1,3 +1,4 @@
 ${PODS_ROOT}/Target Support Files/Pods-FaceIt/Pods-FaceIt-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/DLRadioButton/DLRadioButton.framework
 ${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework
