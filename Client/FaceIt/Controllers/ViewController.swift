@@ -13,7 +13,6 @@ import Vision
 class ViewController: UIViewController {
     
     // MARK: Constatnts
-    let TIME_SCANNING: TimeInterval = 3
     let SERVER_MODEL_IMAGE_SIZE = CGSize(width: 64, height: 64)
     let LOCAL_MODEL_IMAGE_SIZE = CGSize(width: 224, height: 224)
     
@@ -21,10 +20,12 @@ class ViewController: UIViewController {
     var scanTimer: Timer?
     var scannedFaceView = [UIView]()
     var scannedFaceImage = [UIImage]()
-    let configuration = ARWorldTrackingConfiguration()
+    var configuration = ARWorldTrackingConfiguration()
     var emotionModel: VNCoreMLModel?
     var isScanActive: Bool = false
-    var shouldRunModelFromServer = true
+    
+    var shouldRunModelFromServer = false
+    var scanningFrequency: TimeInterval = 3
     
     // MARK: Outlets
     @IBOutlet weak var sceneView: ARSCNView!
@@ -47,8 +48,20 @@ class ViewController: UIViewController {
     }
     
     @objc func moveToConfigVC() {
+        
+        // Stop scanning
+        isScanActive = false
+        setupStopScan()
+        
+        // Config view controller
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let configVC = storyboard.instantiateViewController(withIdentifier: "ConfigVC") as! ConfigViewController
+        configVC.model = shouldRunModelFromServer ? ModelTypes.server : ModelTypes.local
+        configVC.frequency = scanningFrequency
+        configVC.callback = { (type: ModelTypes, frequency: TimeInterval) in
+            self.scanningFrequency = frequency
+            self.shouldRunModelFromServer = (type == ModelTypes.server ? true : false)
+        }
         self.show(configVC, sender: self)
     }
     
@@ -94,7 +107,7 @@ class ViewController: UIViewController {
         navigationItem.rightBarButtonItem =
             UIBarButtonItem(barButtonSystemItem: .pause, target: self, action: #selector(toggleScan))
         navigationItem.rightBarButtonItem?.tintColor = .black
-        scanTimer = Timer.scheduledTimer(timeInterval: TIME_SCANNING,
+        scanTimer = Timer.scheduledTimer(timeInterval: scanningFrequency,
                                          target: self,
                                          selector: #selector(scanForFaces),
                                          userInfo: nil,

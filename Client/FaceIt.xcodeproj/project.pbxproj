@@ -24,6 +24,7 @@
 		0573F26522B83D75007EE2F9 /* newCNNEmotions.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 0573F26422B83D75007EE2F9 /* newCNNEmotions.mlmodel */; };
 		0573F26722B845C9007EE2F9 /* CNNEmotions.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 0573F26622B845C9007EE2F9 /* CNNEmotions.mlmodel */; };
 		0573F26922B8E205007EE2F9 /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0573F26822B8E205007EE2F9 /* ConfigViewController.swift */; };
+		05771921230AAFA500A4D489 /* DLRadioButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05771920230AAFA500A4D489 /* DLRadioButton.framework */; };
 		05B9DB3A229C1D57000168DC /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9DB39229C1D57000168DC /* UIViewControllerExtension.swift */; };
 		05B9ED1622A4FC5F000168DC /* MarkFaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9ED1522A4FC5F000168DC /* MarkFaceView.swift */; };
 		05B9ED1822A4FD7E000168DC /* MarkFaceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05B9ED1722A4FD7E000168DC /* MarkFaceView.xib */; };
@@ -56,6 +57,7 @@
 		0573F26422B83D75007EE2F9 /* newCNNEmotions.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = newCNNEmotions.mlmodel; sourceTree = "<group>"; };
 		0573F26622B845C9007EE2F9 /* CNNEmotions.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = CNNEmotions.mlmodel; sourceTree = "<group>"; };
 		0573F26822B8E205007EE2F9 /* ConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigViewController.swift; sourceTree = "<group>"; };
+		05771920230AAFA500A4D489 /* DLRadioButton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DLRadioButton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		05B9DB39229C1D57000168DC /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		05B9ED1522A4FC5F000168DC /* MarkFaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkFaceView.swift; sourceTree = "<group>"; };
 		05B9ED1722A4FD7E000168DC /* MarkFaceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarkFaceView.xib; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05771921230AAFA500A4D489 /* DLRadioButton.framework in Frameworks */,
 				DEA4406A2E1A8DDB73B2396C /* Pods_FaceIt.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -222,6 +225,7 @@
 		4D19056088F2F97262296487 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				05771920230AAFA500A4D489 /* DLRadioButton.framework */,
 				1946055DFA5F46FE317AD0A1 /* Pods_FaceIt.framework */,
 			);
 			name = Frameworks;
